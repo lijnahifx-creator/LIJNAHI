@@ -6,16 +6,12 @@
 <title>LIJNAHI</title>
 
 <style>
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
+*{box-sizing:border-box;margin:0;padding:0}
 
 body{
   font-family:Arial,sans-serif;
   background:#000;
-  color:#fff;
+  color:white;
   text-align:center;
 }
 
@@ -29,22 +25,28 @@ body{
 }
 
 .avatar{
-  width:120px;
-  height:120px;
+  width:130px;
+  height:130px;
   border-radius:50%;
   display:flex;
   align-items:center;
   justify-content:center;
   background:linear-gradient(135deg,#00aaff,#7c3aed);
-  font-size:50px;
+  font-size:55px;
   font-weight:bold;
-  box-shadow:0 0 35px rgba(0,170,255,.5);
-  margin-bottom:25px;
+  box-shadow:0 0 40px #00aaff;
+  animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+  from{box-shadow:0 0 15px #00aaff}
+  to{box-shadow:0 0 45px #7c3aed}
 }
 
 h1{
+  margin-top:25px;
   font-size:55px;
-  letter-spacing:4px;
+  letter-spacing:5px;
   text-shadow:0 0 20px #00aaff;
 }
 
@@ -55,7 +57,6 @@ h1{
 }
 
 .btn{
-  display:inline-block;
   margin-top:30px;
   padding:14px 30px;
   border:1px solid #00aaff;
@@ -83,19 +84,18 @@ section p{
   line-height:1.7;
 }
 
-.skills{
-  display:flex;
-  gap:10px;
-  justify-content:center;
-  flex-wrap:wrap;
+.social{
+  margin-top:20px;
 }
 
-.skill{
-  padding:10px 16px;
-  background:#111;
-  border:1px solid #222;
+.social a{
+  display:inline-block;
+  margin:5px;
+  padding:10px 18px;
+  border:1px solid #333;
   border-radius:20px;
-  color:#ddd;
+  color:#fff;
+  text-decoration:none;
 }
 
 footer{
@@ -108,6 +108,7 @@ footer{
 <body>
 
 <div class="hero">
+
   <div class="avatar">L</div>
 
   <h1>LIJNAHI</h1>
@@ -115,29 +116,38 @@ footer{
   <p>Welcome to my personal website 🖤</p>
 
   <a class="btn" href="#about">Explore</a>
+
 </div>
 
 <section id="about">
+
   <h2>About Me</h2>
+
   <p>
     Hello! Welcome to my website.
-    I enjoy learning, creating, and exploring new ideas.
+    I enjoy learning, creating and exploring new ideas.
   </p>
+
 </section>
 
 <section>
+
   <h2>My Skills</h2>
 
-  <div class="skills">
-    <span class="skill">HTML</span>
-    <span class="skill">CSS</span>
-    <span class="skill">Learning</span>
-  </div>
+  <p>HTML • CSS • Creativity • Learning</p>
+
 </section>
 
 <section>
-  <h2>Contact</h2>
-  <p>Thanks for visiting my website.</p>
+
+  <h2>Connect</h2>
+
+  <div class="social">
+    <a href="#">Telegram</a>
+    <a href="#">Instagram</a>
+    <a href="#">TikTok</a>
+  </div>
+
 </section>
 
 <footer>
