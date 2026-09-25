@@ -6,11 +6,16 @@
 <title>LIJNAHI</title>
 
 <style>
-body{
+*{
+  box-sizing:border-box;
   margin:0;
-  background:#000;
-  color:white;
+  padding:0;
+}
+
+body{
   font-family:Arial,sans-serif;
+  background:#000;
+  color:#fff;
   text-align:center;
 }
 
@@ -20,21 +25,38 @@ body{
   flex-direction:column;
   justify-content:center;
   align-items:center;
+  padding:25px;
+}
+
+.avatar{
+  width:120px;
+  height:120px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(135deg,#00aaff,#7c3aed);
+  font-size:50px;
+  font-weight:bold;
+  box-shadow:0 0 35px rgba(0,170,255,.5);
+  margin-bottom:25px;
 }
 
 h1{
   font-size:55px;
-  letter-spacing:5px;
+  letter-spacing:4px;
   text-shadow:0 0 20px #00aaff;
 }
 
-p{
+.hero p{
+  margin-top:15px;
   color:#aaa;
   font-size:18px;
 }
 
 .btn{
-  margin-top:25px;
+  display:inline-block;
+  margin-top:30px;
   padding:14px 30px;
   border:1px solid #00aaff;
   border-radius:30px;
@@ -43,16 +65,42 @@ p{
 }
 
 section{
+  max-width:800px;
   margin:25px auto;
-  max-width:700px;
-  padding:30px;
-  background:#0b0b0b;
+  padding:30px 20px;
+  background:#0a0a0a;
   border:1px solid #222;
   border-radius:20px;
 }
 
 h2{
   color:#00aaff;
+  margin-bottom:15px;
+}
+
+section p{
+  color:#bbb;
+  line-height:1.7;
+}
+
+.skills{
+  display:flex;
+  gap:10px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+
+.skill{
+  padding:10px 16px;
+  background:#111;
+  border:1px solid #222;
+  border-radius:20px;
+  color:#ddd;
+}
+
+footer{
+  padding:40px 20px;
+  color:#555;
 }
 </style>
 </head>
@@ -60,24 +108,41 @@ h2{
 <body>
 
 <div class="hero">
+  <div class="avatar">L</div>
+
   <h1>LIJNAHI</h1>
+
   <p>Welcome to my personal website 🖤</p>
+
   <a class="btn" href="#about">Explore</a>
 </div>
 
 <section id="about">
   <h2>About Me</h2>
-  <p>Welcome to my personal website.</p>
+  <p>
+    Hello! Welcome to my website.
+    I enjoy learning, creating, and exploring new ideas.
+  </p>
 </section>
 
 <section>
   <h2>My Skills</h2>
-  <p>HTML • CSS • Creativity • Learning</p>
+
+  <div class="skills">
+    <span class="skill">HTML</span>
+    <span class="skill">CSS</span>
+    <span class="skill">Learning</span>
+  </div>
+</section>
+
+<section>
+  <h2>Contact</h2>
+  <p>Thanks for visiting my website.</p>
 </section>
 
 <footer>
-  <p>© 2026 LIJNAHI</p>
+  © 2026 LIJNAHI
 </footer>
 
 </body>
-                     </html>
+</html>
