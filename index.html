@@ -3,37 +3,100 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LIJNAHI | Personal Website</title>
+<title>LIJNAHI</title>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
 
 body{
   font-family:Arial,sans-serif;
-  background:#000;
-  color:#fff;
+  color:white;
+  background:#02030a;
+  overflow-x:hidden;
 }
+
+/* Animated background */
+
+body::before{
+  content:"";
+  position:fixed;
+  width:300px;
+  height:300px;
+  background:#00aaff;
+  border-radius:50%;
+  filter:blur(120px);
+  opacity:.25;
+  top:-100px;
+  left:-100px;
+  animation:move1 7s infinite alternate;
+  z-index:-1;
+}
+
+body::after{
+  content:"";
+  position:fixed;
+  width:300px;
+  height:300px;
+  background:#8b2cff;
+  border-radius:50%;
+  filter:blur(120px);
+  opacity:.2;
+  bottom:-100px;
+  right:-100px;
+  animation:move2 8s infinite alternate;
+  z-index:-1;
+}
+
+@keyframes move1{
+  to{
+    transform:translate(180px,250px);
+  }
+}
+
+@keyframes move2{
+  to{
+    transform:translate(-180px,-250px);
+  }
+}
+
+/* Navigation */
 
 nav{
   position:fixed;
-  top:0;
-  width:100%;
-  padding:18px;
-  background:rgba(0,0,0,.9);
-  border-bottom:1px solid #222;
+  top:15px;
+  left:50%;
+  transform:translateX(-50%);
+  width:92%;
+  max-width:900px;
+  padding:15px;
+  background:rgba(255,255,255,.06);
+  backdrop-filter:blur(15px);
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:30px;
   text-align:center;
-  z-index:10;
+  z-index:100;
 }
 
 nav a{
-  color:#aaa;
+  color:#bbb;
   text-decoration:none;
   margin:0 8px;
-  font-size:14px;
+  font-size:13px;
 }
 
-nav a:hover{color:#00aaff}
+nav a:hover{
+  color:#00c8ff;
+}
+
+/* Hero */
 
 .hero{
   min-height:100vh;
@@ -42,70 +105,89 @@ nav a:hover{color:#00aaff}
   justify-content:center;
   align-items:center;
   text-align:center;
-  padding:80px 20px 30px;
+  padding:100px 20px 50px;
+}
+
+.badge{
+  padding:8px 18px;
+  border:1px solid #00aaff;
+  border-radius:30px;
+  color:#00c8ff;
+  background:rgba(0,170,255,.08);
+  font-size:13px;
+  margin-bottom:25px;
 }
 
 .logo{
-  width:120px;
-  height:120px;
-  border-radius:50%;
+  width:130px;
+  height:130px;
   display:flex;
   align-items:center;
   justify-content:center;
-  background:linear-gradient(135deg,#00aaff,#7c3aed);
-  font-size:50px;
+  border-radius:35px;
+  background:linear-gradient(135deg,#00c8ff,#7c2cff);
+  font-size:55px;
   font-weight:bold;
-  box-shadow:0 0 35px #0088ff;
-  animation:pulse 2s infinite alternate;
+  transform:rotate(-5deg);
+  box-shadow:0 0 45px rgba(0,180,255,.45);
+  animation:float 3s ease-in-out infinite;
 }
 
-@keyframes pulse{
-  from{transform:scale(1)}
-  to{transform:scale(1.06)}
+@keyframes float{
+  50%{
+    transform:translateY(-12px) rotate(5deg);
+  }
 }
 
 h1{
-  margin-top:25px;
-  font-size:55px;
-  letter-spacing:5px;
-  text-shadow:0 0 25px #00aaff;
+  margin-top:30px;
+  font-size:58px;
+  letter-spacing:6px;
+  background:linear-gradient(90deg,#fff,#00c8ff,#9b5cff);
+  -webkit-background-clip:text;
+  color:transparent;
 }
 
 .hero p{
   margin-top:15px;
-  color:#999;
+  color:#aaa;
   font-size:18px;
 }
 
-.btn{
+.main-btn{
   display:inline-block;
   margin-top:30px;
-  padding:14px 30px;
-  border:1px solid #00aaff;
+  padding:15px 30px;
   border-radius:30px;
-  color:#00aaff;
+  background:linear-gradient(90deg,#00aaff,#7c2cff);
+  color:white;
   text-decoration:none;
+  box-shadow:0 0 25px rgba(0,170,255,.3);
+  transition:.3s;
 }
 
-.btn:hover{
-  background:#00aaff;
-  color:#000;
+.main-btn:hover{
+  transform:scale(1.05);
 }
+
+/* Sections */
 
 section{
-  max-width:850px;
-  margin:30px auto;
+  width:92%;
+  max-width:900px;
+  margin:35px auto;
   padding:45px 25px;
-  background:#080808;
-  border:1px solid #222;
-  border-radius:25px;
+  background:rgba(255,255,255,.055);
+  backdrop-filter:blur(15px);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:28px;
   text-align:center;
 }
 
 h2{
-  color:#00aaff;
-  margin-bottom:20px;
   font-size:30px;
+  margin-bottom:18px;
+  color:#00c8ff;
 }
 
 section p{
@@ -113,41 +195,95 @@ section p{
   line-height:1.8;
 }
 
+/* Cards */
+
 .cards{
-  display:flex;
-  justify-content:center;
-  gap:12px;
-  flex-wrap:wrap;
-  margin-top:20px;
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:15px;
+  margin-top:25px;
 }
 
 .card{
-  padding:14px 20px;
-  background:#111;
-  border:1px solid #222;
+  padding:25px 15px;
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.1);
   border-radius:20px;
-  color:#ddd;
+  transition:.3s;
+}
+
+.card:hover{
+  transform:translateY(-7px);
+  border-color:#00aaff;
+  box-shadow:0 10px 30px rgba(0,170,255,.15);
+}
+
+.card .icon{
+  font-size:32px;
+  margin-bottom:10px;
+}
+
+.card h3{
+  margin-bottom:8px;
+}
+
+.card p{
+  font-size:14px;
+}
+
+/* Social */
+
+.social{
+  margin-top:25px;
 }
 
 .social a{
   display:inline-block;
-  margin:8px;
+  margin:6px;
   padding:12px 20px;
-  border:1px solid #333;
   border-radius:25px;
-  color:#fff;
+  border:1px solid #333;
+  color:#ddd;
   text-decoration:none;
+  transition:.3s;
 }
 
 .social a:hover{
   border-color:#00aaff;
-  color:#00aaff;
+  color:#00c8ff;
 }
+
+/* Footer */
 
 footer{
   text-align:center;
-  padding:50px 20px;
+  padding:60px 20px;
   color:#555;
+  font-size:13px;
+}
+
+/* Mobile */
+
+@media(max-width:600px){
+
+  nav a{
+    margin:0 4px;
+    font-size:11px;
+  }
+
+  h1{
+    font-size:43px;
+  }
+
+  .cards{
+    grid-template-columns:1fr;
+  }
+
+  .logo{
+    width:110px;
+    height:110px;
+    font-size:45px;
+  }
 }
 </style>
 </head>
@@ -159,63 +295,109 @@ footer{
   <a href="#about">About</a>
   <a href="#skills">Skills</a>
   <a href="#projects">Projects</a>
-  <a href="#hobbies">Hobbies</a>
   <a href="#contact">Contact</a>
 </nav>
 
 <div class="hero" id="home">
 
+  <div class="badge">✨ Welcome to my world</div>
+
   <div class="logo">L</div>
 
   <h1>LIJNAHI</h1>
 
-  <p>Welcome to my personal website 🖤</p>
+  <p>Creative • Learning • Technology</p>
 
-  <a class="btn" href="#about">Explore My Website</a>
+  <a class="main-btn" href="#about">Explore Website</a>
 
 </div>
 
 <section id="about">
-  <h2>About Me</h2>
+
+  <h2>👤 About Me</h2>
+
   <p>
-    Hello! Welcome to my personal website.
-    I enjoy learning, creating and discovering new things.
+    Welcome to my personal website.
+    I love learning new things, exploring technology
+    and creating new ideas.
   </p>
+
 </section>
 
 <section id="skills">
-  <h2>My Skills</h2>
+
+  <h2>💻 My Skills</h2>
 
   <div class="cards">
-    <div class="card">HTML</div>
-    <div class="card">CSS</div>
-    <div class="card">Creativity</div>
-    <div class="card">Learning</div>
+
+    <div class="card">
+      <div class="icon">🌐</div>
+      <h3>HTML</h3>
+      <p>Building websites</p>
+    </div>
+
+    <div class="card">
+      <div class="icon">🎨</div>
+      <h3>CSS</h3>
+      <p>Modern designs</p>
+    </div>
+
+    <div class="card">
+      <div class="icon">💡</div>
+      <h3>Creativity</h3>
+      <p>New ideas</p>
+    </div>
+
+    <div class="card">
+      <div class="icon">🚀</div>
+      <h3>Learning</h3>
+      <p>Always improving</p>
+    </div>
+
   </div>
+
 </section>
 
 <section id="projects">
-  <h2>My Projects</h2>
-  <p>
-    Personal Website<br>
-    Creative Designs<br>
-    Future Projects 🚀
-  </p>
-</section>
 
-<section id="hobbies">
-  <h2>My Hobbies</h2>
+  <h2>🚀 Projects</h2>
 
   <div class="cards">
-    <div class="card">🎮 Gaming</div>
-    <div class="card">💻 Technology</div>
-    <div class="card">🎵 Music</div>
-    <div class="card">✨ Creativity</div>
+
+    <div class="card">
+      <div class="icon">🌐</div>
+      <h3>Personal Website</h3>
+      <p>My first website project.</p>
+    </div>
+
+    <div class="card">
+      <div class="icon">🎮</div>
+      <h3>Future Project</h3>
+      <p>More projects coming soon.</p>
+    </div>
+
   </div>
+
+</section>
+
+<section>
+
+  <h2>🎯 Hobbies</h2>
+
+  <div class="cards">
+
+    <div class="card">🎮 Gaming</div>
+    <div class="card">🎵 Music</div>
+    <div class="card">💻 Technology</div>
+    <div class="card">✨ Creativity</div>
+
+  </div>
+
 </section>
 
 <section id="contact">
-  <h2>Connect</h2>
+
+  <h2>📱 Connect</h2>
 
   <p>Thanks for visiting my website.</p>
 
@@ -224,10 +406,12 @@ footer{
     <a href="#">TikTok</a>
     <a href="#">Instagram</a>
   </div>
+
 </section>
 
 <footer>
-  © 2026 LIJNAHI • All Rights Reserved
+  © 2026 LIJNAHI<br><br>
+  Made with 🖤 and creativity
 </footer>
 
 </body>
