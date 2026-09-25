@@ -3,17 +3,37 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LIJNAHI</title>
+<title>LIJNAHI | Personal Website</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
 
 body{
   font-family:Arial,sans-serif;
   background:#000;
-  color:white;
-  text-align:center;
+  color:#fff;
 }
+
+nav{
+  position:fixed;
+  top:0;
+  width:100%;
+  padding:18px;
+  background:rgba(0,0,0,.9);
+  border-bottom:1px solid #222;
+  text-align:center;
+  z-index:10;
+}
+
+nav a{
+  color:#aaa;
+  text-decoration:none;
+  margin:0 8px;
+  font-size:14px;
+}
+
+nav a:hover{color:#00aaff}
 
 .hero{
   min-height:100vh;
@@ -21,42 +41,44 @@ body{
   flex-direction:column;
   justify-content:center;
   align-items:center;
-  padding:25px;
+  text-align:center;
+  padding:80px 20px 30px;
 }
 
-.avatar{
-  width:130px;
-  height:130px;
+.logo{
+  width:120px;
+  height:120px;
   border-radius:50%;
   display:flex;
   align-items:center;
   justify-content:center;
   background:linear-gradient(135deg,#00aaff,#7c3aed);
-  font-size:55px;
+  font-size:50px;
   font-weight:bold;
-  box-shadow:0 0 40px #00aaff;
-  animation:glow 2s infinite alternate;
+  box-shadow:0 0 35px #0088ff;
+  animation:pulse 2s infinite alternate;
 }
 
-@keyframes glow{
-  from{box-shadow:0 0 15px #00aaff}
-  to{box-shadow:0 0 45px #7c3aed}
+@keyframes pulse{
+  from{transform:scale(1)}
+  to{transform:scale(1.06)}
 }
 
 h1{
   margin-top:25px;
   font-size:55px;
   letter-spacing:5px;
-  text-shadow:0 0 20px #00aaff;
+  text-shadow:0 0 25px #00aaff;
 }
 
 .hero p{
   margin-top:15px;
-  color:#aaa;
+  color:#999;
   font-size:18px;
 }
 
 .btn{
+  display:inline-block;
   margin-top:30px;
   padding:14px 30px;
   border:1px solid #00aaff;
@@ -65,41 +87,66 @@ h1{
   text-decoration:none;
 }
 
+.btn:hover{
+  background:#00aaff;
+  color:#000;
+}
+
 section{
-  max-width:800px;
-  margin:25px auto;
-  padding:30px 20px;
-  background:#0a0a0a;
+  max-width:850px;
+  margin:30px auto;
+  padding:45px 25px;
+  background:#080808;
   border:1px solid #222;
-  border-radius:20px;
+  border-radius:25px;
+  text-align:center;
 }
 
 h2{
   color:#00aaff;
-  margin-bottom:15px;
+  margin-bottom:20px;
+  font-size:30px;
 }
 
 section p{
-  color:#bbb;
-  line-height:1.7;
+  color:#aaa;
+  line-height:1.8;
 }
 
-.social{
+.cards{
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  flex-wrap:wrap;
   margin-top:20px;
+}
+
+.card{
+  padding:14px 20px;
+  background:#111;
+  border:1px solid #222;
+  border-radius:20px;
+  color:#ddd;
 }
 
 .social a{
   display:inline-block;
-  margin:5px;
-  padding:10px 18px;
+  margin:8px;
+  padding:12px 20px;
   border:1px solid #333;
-  border-radius:20px;
+  border-radius:25px;
   color:#fff;
   text-decoration:none;
 }
 
+.social a:hover{
+  border-color:#00aaff;
+  color:#00aaff;
+}
+
 footer{
-  padding:40px 20px;
+  text-align:center;
+  padding:50px 20px;
   color:#555;
 }
 </style>
@@ -107,51 +154,80 @@ footer{
 
 <body>
 
-<div class="hero">
+<nav>
+  <a href="#home">Home</a>
+  <a href="#about">About</a>
+  <a href="#skills">Skills</a>
+  <a href="#projects">Projects</a>
+  <a href="#hobbies">Hobbies</a>
+  <a href="#contact">Contact</a>
+</nav>
 
-  <div class="avatar">L</div>
+<div class="hero" id="home">
+
+  <div class="logo">L</div>
 
   <h1>LIJNAHI</h1>
 
   <p>Welcome to my personal website 🖤</p>
 
-  <a class="btn" href="#about">Explore</a>
+  <a class="btn" href="#about">Explore My Website</a>
 
 </div>
 
 <section id="about">
-
   <h2>About Me</h2>
-
   <p>
-    Hello! Welcome to my website.
-    I enjoy learning, creating and exploring new ideas.
+    Hello! Welcome to my personal website.
+    I enjoy learning, creating and discovering new things.
   </p>
-
 </section>
 
-<section>
-
+<section id="skills">
   <h2>My Skills</h2>
 
-  <p>HTML • CSS • Creativity • Learning</p>
-
+  <div class="cards">
+    <div class="card">HTML</div>
+    <div class="card">CSS</div>
+    <div class="card">Creativity</div>
+    <div class="card">Learning</div>
+  </div>
 </section>
 
-<section>
+<section id="projects">
+  <h2>My Projects</h2>
+  <p>
+    Personal Website<br>
+    Creative Designs<br>
+    Future Projects 🚀
+  </p>
+</section>
 
+<section id="hobbies">
+  <h2>My Hobbies</h2>
+
+  <div class="cards">
+    <div class="card">🎮 Gaming</div>
+    <div class="card">💻 Technology</div>
+    <div class="card">🎵 Music</div>
+    <div class="card">✨ Creativity</div>
+  </div>
+</section>
+
+<section id="contact">
   <h2>Connect</h2>
+
+  <p>Thanks for visiting my website.</p>
 
   <div class="social">
     <a href="#">Telegram</a>
-    <a href="#">Instagram</a>
     <a href="#">TikTok</a>
+    <a href="#">Instagram</a>
   </div>
-
 </section>
 
 <footer>
-  © 2026 LIJNAHI
+  © 2026 LIJNAHI • All Rights Reserved
 </footer>
 
 </body>
