@@ -3,14 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>LIJNAHI</title>
 
-<style> 
-  <script>
-function toggleTheme(){
-  document.body.classList.toggle("light");
-}
-</script>
+<style>
 *{
   margin:0;
   padding:0;
@@ -26,80 +22,126 @@ body{
   color:white;
   background:#02030a;
   overflow-x:hidden;
+  transition:.4s;
 }
 
-/* Animated background */
+/* LOADING */
 
-<section id="posts">
-  <h2>📝 My Posts</h2>
+#loader{
+  position:fixed;
+  inset:0;
+  background:#02030a;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  z-index:9999;
+  transition:.6s;
+}
 
-  <div class="card">
-    <h3>My First Post</h3>
-    <p>Welcome to my website! 🚀</p>
-    <small>September 2026</small>
-  </div>
+.loader-logo{
+  width:90px;
+  height:90px;
+  border-radius:25px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:40px;
+  font-weight:bold;
+  background:linear-gradient(135deg,#00c8ff,#8b2cff);
+  box-shadow:0 0 40px #00aaff;
+  animation:pulse 1.2s infinite;
+}
 
-  <br>
+.loader-text{
+  margin-top:20px;
+  color:#00c8ff;
+  letter-spacing:4px;
+}
 
-  <div class="card">
-    <h3>New Post</h3>
-    <p>More posts coming soon...</p>
-  </div>
-</section>body::before{
+@keyframes pulse{
+  50%{
+    transform:scale(1.08);
+  }
+}
+
+/* MOVING BACKGROUND */
+
+body::before{
   content:"";
   position:fixed;
-  width:300px;
-  height:300px;
+  width:350px;
+  height:350px;
   background:#00aaff;
   border-radius:50%;
-  filter:blur(120px);
-  opacity:.25;
+  filter:blur(130px);
+  opacity:.22;
   top:-100px;
   left:-100px;
-  animation:move1 7s infinite alternate;
-  z-index:-1;
+  animation:move1 8s infinite alternate;
+  z-index:-2;
 }
 
 body::after{
   content:"";
   position:fixed;
-  width:300px;
-  height:300px;
+  width:350px;
+  height:350px;
   background:#8b2cff;
   border-radius:50%;
-  filter:blur(120px);
+  filter:blur(130px);
   opacity:.2;
   bottom:-100px;
   right:-100px;
-  animation:move2 8s infinite alternate;
-  z-index:-1;
+  animation:move2 9s infinite alternate;
+  z-index:-2;
 }
 
 @keyframes move1{
   to{
-    transform:translate(180px,250px);
+    transform:translate(200px,300px);
   }
 }
 
 @keyframes move2{
   to{
-    transform:translate(-180px,-250px);
+    transform:translate(-200px,-300px);
   }
 }
 
-/* Navigation */
+/* STARS */
+
+.stars{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:-1;
+  opacity:.4;
+  background-image:
+  radial-gradient(circle,white 1px,transparent 1px);
+  background-size:70px 70px;
+  animation:starsMove 20s linear infinite;
+}
+
+@keyframes starsMove{
+  to{
+    transform:translateY(70px);
+  }
+}
+
+/* NAV */
 
 nav{
   position:fixed;
   top:15px;
   left:50%;
   transform:translateX(-50%);
-  width:92%;
-  max-width:900px;
+  width:94%;
+  max-width:1000px;
   padding:15px;
-  background:rgba(255,255,255,.06);
-  backdrop-filter:blur(15px);
-  border:1px solid rgba(255,255,255,.12);
+  background:rgba(255,255,255,.07);
+  backdrop-filter:blur(18px);
+  border:1px solid rgba(255,255,255,.15);
   border-radius:30px;
   text-align:center;
   z-index:100;
@@ -108,15 +150,28 @@ nav{
 nav a{
   color:#bbb;
   text-decoration:none;
-  margin:0 8px;
+  margin:0 7px;
   font-size:13px;
+  transition:.3s;
 }
 
 nav a:hover{
   color:#00c8ff;
 }
 
-/* Hero */
+/* NAV BUTTONS */
+
+.nav-btn{
+  border:1px solid #444;
+  background:rgba(255,255,255,.06);
+  color:white;
+  border-radius:20px;
+  padding:7px 10px;
+  margin-left:5px;
+  cursor:pointer;
+}
+
+/* HERO */
 
 .hero{
   min-height:100vh;
@@ -125,7 +180,7 @@ nav a:hover{
   justify-content:center;
   align-items:center;
   text-align:center;
-  padding:100px 20px 50px;
+  padding:120px 20px 60px;
 }
 
 .badge{
@@ -134,35 +189,34 @@ nav a:hover{
   border-radius:30px;
   color:#00c8ff;
   background:rgba(0,170,255,.08);
-  font-size:13px;
   margin-bottom:25px;
 }
 
 .logo{
-  width:130px;
-  height:130px;
+  width:135px;
+  height:135px;
   display:flex;
   align-items:center;
   justify-content:center;
   border-radius:35px;
   background:linear-gradient(135deg,#00c8ff,#7c2cff);
-  font-size:55px;
+  font-size:60px;
   font-weight:bold;
   transform:rotate(-5deg);
-  box-shadow:0 0 45px rgba(0,180,255,.45);
+  box-shadow:0 0 50px rgba(0,180,255,.5);
   animation:float 3s ease-in-out infinite;
 }
 
 @keyframes float{
   50%{
-    transform:translateY(-12px) rotate(5deg);
+    transform:translateY(-15px) rotate(5deg);
   }
 }
 
 h1{
   margin-top:30px;
   font-size:58px;
-  letter-spacing:6px;
+  letter-spacing:7px;
   background:linear-gradient(90deg,#fff,#00c8ff,#9b5cff);
   -webkit-background-clip:text;
   color:transparent;
@@ -182,31 +236,43 @@ h1{
   background:linear-gradient(90deg,#00aaff,#7c2cff);
   color:white;
   text-decoration:none;
-  box-shadow:0 0 25px rgba(0,170,255,.3);
+  box-shadow:0 0 30px rgba(0,170,255,.35);
   transition:.3s;
 }
 
 .main-btn:hover{
-  transform:scale(1.05);
+  transform:scale(1.06);
 }
 
-/* Sections */
+/* SECTIONS */
 
 section{
   width:92%;
-  max-width:900px;
+  max-width:950px;
   margin:35px auto;
   padding:45px 25px;
   background:rgba(255,255,255,.055);
-  backdrop-filter:blur(15px);
+  backdrop-filter:blur(18px);
   border:1px solid rgba(255,255,255,.1);
   border-radius:28px;
   text-align:center;
+  animation:sectionIn 1s ease;
+}
+
+@keyframes sectionIn{
+  from{
+    opacity:0;
+    transform:translateY(30px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
 }
 
 h2{
   font-size:30px;
-  margin-bottom:18px;
+  margin-bottom:25px;
   color:#00c8ff;
 }
 
@@ -215,17 +281,17 @@ section p{
   line-height:1.8;
 }
 
-/* Cards */
+/* CARDS */
 
 .cards{
   display:grid;
   grid-template-columns:repeat(2,1fr);
-  gap:15px;
+  gap:16px;
   margin-top:25px;
 }
 
 .card{
-  padding:25px 15px;
+  padding:25px 18px;
   background:rgba(255,255,255,.05);
   border:1px solid rgba(255,255,255,.1);
   border-radius:20px;
@@ -233,25 +299,126 @@ section p{
 }
 
 .card:hover{
-  transform:translateY(-7px);
+  transform:translateY(-8px);
   border-color:#00aaff;
-  box-shadow:0 10px 30px rgba(0,170,255,.15);
+  box-shadow:0 15px 35px rgba(0,170,255,.15);
 }
 
 .card .icon{
-  font-size:32px;
-  margin-bottom:10px;
+  font-size:35px;
+  margin-bottom:12px;
 }
 
 .card h3{
-  margin-bottom:8px;
+  margin-bottom:10px;
 }
 
 .card p{
   font-size:14px;
 }
 
-/* Social */
+/* STORY */
+
+.story-box{
+  min-height:300px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+}
+
+.chapter{
+  display:none;
+  animation:chapter .5s ease;
+}
+
+.chapter.active{
+  display:block;
+}
+
+@keyframes chapter{
+  from{
+    opacity:0;
+    transform:translateX(30px);
+  }
+  to{
+    opacity:1;
+    transform:translateX(0);
+  }
+}
+
+.story-buttons{
+  margin-top:25px;
+}
+
+.story-buttons button{
+  padding:12px 20px;
+  margin:5px;
+  border:none;
+  border-radius:25px;
+  background:linear-gradient(90deg,#00aaff,#7c2cff);
+  color:white;
+  cursor:pointer;
+  font-size:15px;
+}
+
+.page-number{
+  margin-top:15px;
+  color:#777;
+}
+
+/* POSTS */
+
+.post-form{
+  margin-top:25px;
+}
+
+.post-form input,
+.post-form textarea{
+  width:100%;
+  margin:7px 0;
+  padding:14px;
+  border-radius:15px;
+  border:1px solid #333;
+  background:rgba(0,0,0,.35);
+  color:white;
+  outline:none;
+}
+
+.post-form textarea{
+  min-height:120px;
+  resize:vertical;
+}
+
+.post-form button{
+  margin-top:10px;
+  padding:12px 25px;
+  border:none;
+  border-radius:25px;
+  background:linear-gradient(90deg,#00aaff,#7c2cff);
+  color:white;
+  cursor:pointer;
+}
+
+.post{
+  margin-top:18px;
+  padding:22px;
+  text-align:left;
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:18px;
+}
+
+.post h3{
+  margin-bottom:8px;
+  color:#00c8ff;
+}
+
+.post small{
+  color:#777;
+}
+
+/* SOCIAL */
 
 .social{
   margin-top:25px;
@@ -273,36 +440,94 @@ section p{
   color:#00c8ff;
 }
 
-/* Footer */
+/* DARK / LIGHT */
+
+body.light{
+  background:#f3f6fa;
+  color:#111;
+}
+
+body.light nav,
+body.light section{
+  background:rgba(255,255,255,.7);
+  border-color:rgba(0,0,0,.1);
+}
+
+body.light nav a{
+  color:#444;
+}
+
+body.light section p{
+  color:#555;
+}
+
+body.light .card{
+  background:rgba(255,255,255,.7);
+  border-color:#ddd;
+}
+
+body.light .post-form input,
+body.light .post-form textarea{
+  background:white;
+  color:#111;
+  border-color:#ccc;
+}
+
+body.light .nav-btn{
+  color:#111;
+}
+
+/* FOOTER */
 
 footer{
   text-align:center;
-  padding:60px 20px;
+  padding:70px 20px;
   color:#555;
   font-size:13px;
 }
 
-/* Mobile */
+/* MOBILE */
 
 @media(max-width:600px){
 
+  nav{
+    padding:13px 7px;
+  }
+
   nav a{
-    margin:0 4px;
-    font-size:11px;
+    margin:0 3px;
+    font-size:10px;
+  }
+
+  .nav-btn{
+    padding:5px 7px;
+    font-size:10px;
   }
 
   h1{
-    font-size:43px;
+    font-size:42px;
+  }
+
+  .hero p{
+    font-size:15px;
+  }
+
+  .logo{
+    width:110px;
+    height:110px;
+    font-size:48px;
   }
 
   .cards{
     grid-template-columns:1fr;
   }
 
-  .logo{
-    width:110px;
-    height:110px;
-    font-size:45px;
+  section{
+    padding:35px 18px;
+  }
+
+  h2{
+    font-size:26px;
   }
 }
 </style>
@@ -310,79 +535,184 @@ footer{
 
 <body>
 
+<!-- LOADING -->
+
+<div id="loader">
+  <div class="loader-logo">L</div>
+  <div class="loader-text">LIJNAHI</div>
+</div>
+
+<div class="stars"></div>
+
+<!-- NAVIGATION -->
+
 <nav>
+
   <a href="#home">Home</a>
   <a href="#about">About</a>
+  <a href="#posts">Posts</a>
   <a href="#skills">Skills</a>
   <a href="#projects">Projects</a>
+  <a href="#hobbies">Hobbies</a>
   <a href="#contact">Contact</a>
+
+  <button class="nav-btn" onclick="toggleTheme()">🌙</button>
+
+  <button class="nav-btn" onclick="toggleLanguage()">🌍</button>
+
 </nav>
+
+<!-- HERO -->
 
 <div class="hero" id="home">
 
-  <div class="badge">✨ Welcome to my world</div>
+  <div class="badge" id="welcome">
+    ✨ Welcome to my world
+  </div>
 
   <div class="logo">L</div>
 
   <h1>LIJNAHI</h1>
 
-  <p>Creative • Learning • Technology</p>
+  <p id="heroText">
+    Creative • Learning • Technology
+  </p>
 
-  <a class="main-btn" href="#about">Explore Website</a>
+  <a class="main-btn" href="#about">
+    Explore Website 🚀
+  </a>
 
 </div>
 
-<section id="about"><div class="story-buttons">
-  <button onclick="alert('Next chapter coming soon 🚀')">Next ➡️</button>
-  <button onclick="alert('Previous chapter 📖')">⬅️ Previous</button>
-</div>
+<!-- ABOUT / STORY -->
 
-  <h2>📖 My Story</h2>
+<section id="about">
 
-  <div class="card">
+  <h2>📖 <span id="storyTitle">My Story</span></h2>
 
-    <h3>Chapter 1 — Who I Am</h3>
+  <div class="story-box">
 
-    <p>
-      I am LIJNAHI — a young person with big dreams,
-      curiosity, and a passion for learning new things.
-    </p>
+    <div class="chapter active">
 
-    <br>
+      <h3>Chapter 1 — Who I Am</h3>
 
-    <h3>Chapter 2 — My Journey</h3>
+      <br>
 
-    <p>
-      My journey is still being written.
-      I love technology, creativity, gaming, music,
-      and discovering new ideas.
-    </p>
+      <p>
+        I am LIJNAHI — a young person with big dreams,
+        curiosity, and a passion for learning new things.
+      </p>
 
-    <br>
+    </div>
 
-    <h3>Chapter 3 — My Dreams</h3>
+    <div class="chapter">
 
-    <p>
-      I want to keep learning, creating new projects,
-      and turning my ideas into something meaningful.
-    </p>
+      <h3>Chapter 2 — My Journey</h3>
 
-    <br>
+      <br>
 
-    <h3>Chapter 4 — My Future 🚀</h3>
+      <p>
+        My journey is still being written.
+        I love technology, creativity, gaming,
+        music, and discovering new ideas.
+      </p>
 
-    <p>
-      The future is an open book.
-      The best chapters of my story are still waiting to be written.
-    </p>
+    </div>
 
-    <br>
+    <div class="chapter">
 
-    <p><b>— LIJNAHI 🖤</b></p>
+      <h3>Chapter 3 — My Dreams</h3>
+
+      <br>
+
+      <p>
+        I want to keep learning, creating new projects,
+        and turning my ideas into something meaningful.
+      </p>
+
+    </div>
+
+    <div class="chapter">
+
+      <h3>Chapter 4 — My Future 🚀</h3>
+
+      <br>
+
+      <p>
+        The future is an open book.
+        The best chapters of my story are still waiting
+        to be written.
+      </p>
+
+    </div>
+
+    <div class="story-buttons">
+
+      <button onclick="previousChapter()">
+        ⬅️ Previous
+      </button>
+
+      <button onclick="nextChapter()">
+        Next ➡️
+      </button>
+
+    </div>
+
+    <div class="page-number" id="pageNumber">
+      Chapter 1 / 4
+    </div>
 
   </div>
 
 </section>
+
+<!-- POSTS -->
+
+<section id="posts">
+
+  <h2>📝 My Posts</h2>
+
+  <div id="postList">
+
+    <div class="post">
+
+      <h3>My First Post 🚀</h3>
+
+      <p>
+        Welcome to my personal website!
+        This is my first post.
+      </p>
+
+      <small>September 2026</small>
+
+    </div>
+
+  </div>
+
+  <div class="post-form">
+
+    <h3>➕ Create a Post</h3>
+
+    <input
+      id="postTitle"
+      type="text"
+      placeholder="Post title"
+    >
+
+    <textarea
+      id="postText"
+      placeholder="Write your post..."
+    ></textarea>
+
+    <button onclick="addPost()">
+      Publish Post 🚀
+    </button>
+
+  </div>
+
+</section>
+
+<!-- SKILLS -->
 
 <section id="skills">
 
@@ -405,7 +735,7 @@ footer{
     <div class="card">
       <div class="icon">💡</div>
       <h3>Creativity</h3>
-      <p>New ideas</p>
+      <p>Creating new ideas</p>
     </div>
 
     <div class="card">
@@ -418,6 +748,8 @@ footer{
 
 </section>
 
+<!-- PROJECTS -->
+
 <section id="projects">
 
   <h2>🚀 Projects</h2>
@@ -425,54 +757,298 @@ footer{
   <div class="cards">
 
     <div class="card">
+
       <div class="icon">🌐</div>
-      <h3>Personal Website</h3>
-      <p>My first website project.</p>
+
+      <h3>LIJNAHI Website</h3>
+
+      <p>
+        My personal website project.
+      </p>
+
     </div>
 
     <div class="card">
-      <div class="icon">🎮</div>
+
+      <div class="icon">💻</div>
+
       <h3>Future Project</h3>
-      <p>More projects coming soon.</p>
+
+      <p>
+        More creative projects coming soon.
+      </p>
+
     </div>
 
   </div>
 
 </section>
 
-<section>
+<!-- HOBBIES -->
 
-  <h2>🎯 Hobbies</h2>
+<section id="hobbies">
+
+  <h2>🎮 Hobbies</h2>
 
   <div class="cards">
 
-    <div class="card">🎮 Gaming</div>
-    <div class="card">🎵 Music</div>
-    <div class="card">💻 Technology</div>
-    <div class="card">✨ Creativity</div>
+    <div class="card">
+      🎮 Gaming
+    </div>
+
+    <div class="card">
+      🎵 Music
+    </div>
+
+    <div class="card">
+      💻 Technology
+    </div>
+
+    <div class="card">
+      ✨ Creativity
+    </div>
 
   </div>
 
 </section>
+
+<!-- CONTACT -->
 
 <section id="contact">
 
-  <h2>📱 Connect</h2>
+  <h2>📱 Contact & Social</h2>
 
-  <p>Thanks for visiting my website.</p>
+  <p>
+    Thanks for visiting my website.
+  </p>
 
   <div class="social">
-    <a href="#">Telegram</a>
-    <a href="#">TikTok</a>
-    <a href="#">Instagram</a>
+
+    <a href="#">
+      Telegram
+    </a>
+
+    <a href="#">
+      TikTok
+    </a>
+
+    <a href="#">
+      Instagram
+    </a>
+
   </div>
 
 </section>
 
+<!-- FOOTER -->
+
 <footer>
-  © 2026 LIJNAHI<br><br>
+
+  © 2026 LIJNAHI
+
+  <br><br>
+
   Made with 🖤 and creativity
+
 </footer>
 
+<script>
+
+/* LOADING */
+
+window.addEventListener("load",function(){
+
+  setTimeout(function(){
+
+    document.getElementById("loader").style.opacity="0";
+
+    setTimeout(function(){
+
+      document.getElementById("loader").style.display="none";
+
+    },600);
+
+  },900);
+
+});
+
+
+/* STORY */
+
+let currentChapter=0;
+
+const chapters=document.querySelectorAll(".chapter");
+
+function showChapter(){
+
+  chapters.forEach(function(chapter,index){
+
+    chapter.classList.toggle(
+      "active",
+      index===currentChapter
+    );
+
+  });
+
+  document.getElementById("pageNumber").textContent=
+    "Chapter "+(currentChapter+1)+" / "+chapters.length;
+
+}
+
+function nextChapter(){
+
+  currentChapter++;
+
+  if(currentChapter>=chapters.length){
+
+    currentChapter=0;
+
+  }
+
+  showChapter();
+
+}
+
+function previousChapter(){
+
+  currentChapter--;
+
+  if(currentChapter<0){
+
+    currentChapter=chapters.length-1;
+
+  }
+
+  showChapter();
+
+}
+
+
+/* DARK / LIGHT */
+
+function toggleTheme(){
+
+  document.body.classList.toggle("light");
+
+}
+
+
+/* LANGUAGE */
+
+let amharic=false;
+
+function toggleLanguage(){
+
+  amharic=!amharic;
+
+  if(amharic){
+
+    document.getElementById("welcome").textContent=
+      "✨ ወደ አለሜ እንኳን በደህና መጣህ";
+
+    document.getElementById("storyTitle").textContent=
+      "የእኔ ታሪክ";
+
+    document.getElementById("heroText").textContent=
+      "ፈጠራ • ትምህርት • ቴክኖሎጂ";
+
+  }else{
+
+    document.getElementById("welcome").textContent=
+      "✨ Welcome to my world";
+
+    document.getElementById("storyTitle").textContent=
+      "My Story";
+
+    document.getElementById("heroText").textContent=
+      "Creative • Learning • Technology";
+
+  }
+
+}
+
+
+/* POSTS */
+
+function addPost(){
+
+  const title=
+    document.getElementById("postTitle").value.trim();
+
+  const text=
+    document.getElementById("postText").value.trim();
+
+  if(title==="" || text===""){
+
+    alert("Please write a title and post.");
+
+    return;
+
+  }
+
+  const post=document.createElement("div");
+
+  post.className="post";
+
+  const date=new Date().toLocaleDateString();
+
+  post.innerHTML=
+    "<h3>"+escapeHTML(title)+"</h3>"+
+    "<p>"+escapeHTML(text)+"</p>"+
+    "<small>"+date+"</small>";
+
+  document.getElementById("postList")
+    .prepend(post);
+
+  document.getElementById("postTitle").value="";
+
+  document.getElementById("postText").value="";
+
+  savePosts();
+
+}
+
+
+/* SAVE POSTS */
+
+function savePosts(){
+
+  localStorage.setItem(
+    "lijnahiPosts",
+    document.getElementById("postList").innerHTML
+  );
+
+}
+
+function loadPosts(){
+
+  const saved=
+    localStorage.getItem("lijnahiPosts");
+
+  if(saved){
+
+    document.getElementById("postList").innerHTML=saved;
+
+  }
+
+}
+
+
+/* SECURITY */
+
+function escapeHTML(text){
+
+  const div=document.createElement("div");
+
+  div.textContent=text;
+
+  return div.innerHTML;
+
+}
+
+loadPosts();
+
+</script>
+
 </body>
-</html>
+  </html>
