@@ -1,11 +1,9 @@
-<img src="IMG_20241130_212546_825.jpg" alt="My Photo"><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-
-<title>LIJNAHI | My Personal Website</title>
+<title>LIJNAHI</title>
 
 <style>
 *{
@@ -15,641 +13,210 @@
   scroll-behavior:smooth;
 }
 
-:root{
-  --bg:#030303;
-  --card:#0d0d0d;
-  --text:#fff;
-  --muted:#999;
-  --accent:#00e5ff;
-  --border:#222;
-}
-
-body.light{
-  --bg:#f5f5f5;
-  --card:#fff;
-  --text:#111;
-  --muted:#666;
-  --accent:#0066ff;
-  --border:#ddd;
-}
-
 body{
   font-family:Arial,sans-serif;
-  background:var(--bg);
-  color:var(--text);
+  background:#02030a;
+  color:white;
   overflow-x:hidden;
-  transition:.4s;
 }
 
-/* Moving Background */
-
-body::before{
-  content:"";
-  position:fixed;
-  width:500px;
-  height:500px;
-  left:-180px;
-  top:-180px;
-  background:radial-gradient(circle,var(--accent),transparent 65%);
-  opacity:.08;
-  animation:bgMove 10s infinite alternate;
-  z-index:-2;
-}
-
+/* Moving background */
+body::before,
 body::after{
   content:"";
   position:fixed;
-  width:500px;
-  height:500px;
-  right:-200px;
-  bottom:-200px;
-  background:radial-gradient(circle,#7c00ff,transparent 65%);
-  opacity:.08;
-  animation:bgMove2 12s infinite alternate;
-  z-index:-2;
-}
-
-@keyframes bgMove{
-  from{transform:translate(0,0)}
-  to{transform:translate(250px,200px)}
-}
-
-@keyframes bgMove2{
-  from{transform:translate(0,0)}
-  to{transform:translate(-200px,-150px)}
-}
-
-/* Particles */
-
-#particles{
-  position:fixed;
-  inset:0;
-  z-index:-1;
-  pointer-events:none;
-}
-
-.particle{
-  position:absolute;
-  width:3px;
-  height:3px;
+  width:300px;
+  height:300px;
   border-radius:50%;
-  background:var(--accent);
-  opacity:.5;
-  animation:particleMove 8s linear infinite;
+  filter:blur(100px);
+  z-index:-1;
+  animation:move 8s infinite alternate;
 }
 
-@keyframes particleMove{
-  from{transform:translateY(100vh)}
-  to{transform:translateY(-10vh)}
+body::before{
+  background:#00aaff;
+  top:-100px;
+  left:-100px;
+  opacity:.25;
+}
+
+body::after{
+  background:#8b2cff;
+  right:-100px;
+  bottom:-100px;
+  opacity:.2;
+  animation-delay:2s;
+}
+
+@keyframes move{
+  from{transform:translate(0,0);}
+  to{transform:translate(180px,150px);}
 }
 
 /* Navigation */
-
 nav{
   position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  z-index:1000;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:15px 7%;
-  background:rgba(0,0,0,.75);
+  top:15px;
+  left:50%;
+  transform:translateX(-50%);
+  width:92%;
+  max-width:900px;
+  padding:15px;
+  border-radius:30px;
+  background:rgba(255,255,255,.08);
   backdrop-filter:blur(15px);
-  border-bottom:1px solid var(--border);
-}
-
-body.light nav{
-  background:rgba(255,255,255,.8);
-}
-
-.logo{
-  font-size:22px;
-  font-weight:bold;
-  color:var(--accent);
-}
-
-nav ul{
-  display:flex;
-  gap:18px;
-  list-style:none;
+  text-align:center;
+  z-index:100;
 }
 
 nav a{
-  color:var(--text);
+  color:#ddd;
   text-decoration:none;
+  margin:0 8px;
   font-size:13px;
-  transition:.3s;
 }
 
-nav a:hover{
-  color:var(--accent);
-}
-
-.nav-controls{
-  display:flex;
-  gap:7px;
-}
-
-.nav-btn{
-  border:1px solid var(--border);
-  background:var(--card);
-  color:var(--text);
-  padding:8px 10px;
-  border-radius:9px;
-  cursor:pointer;
-}
-
-/* Sections */
-
-section{
+/* Home */
+.hero{
   min-height:100vh;
-  padding:110px 8% 60px;
   display:flex;
   flex-direction:column;
   justify-content:center;
-}
-
-.title{
-  text-align:center;
-  font-size:40px;
-  margin-bottom:40px;
-}
-
-.title span{
-  color:var(--accent);
-}
-
-/* Hero */
-
-.hero{
-  text-align:center;
   align-items:center;
+  text-align:center;
+  padding:100px 20px;
 }
 
-.profile{
-  width:140px;
-  height:140px;
-  border-radius:50%;
-  border:3px solid var(--accent);
+.logo{
+  width:120px;
+  height:120px;
+  border-radius:30px;
+  background:linear-gradient(135deg,#00c8ff,#7c2cff);
   display:flex;
   align-items:center;
   justify-content:center;
   font-size:55px;
   font-weight:bold;
-  margin-bottom:25px;
-  box-shadow:0 0 35px rgba(0,229,255,.25);
-  animation:profileFloat 3s ease-in-out infinite;
+  box-shadow:0 0 40px #008cff;
+  animation:float 3s infinite;
 }
 
-@keyframes profileFloat{
-  50%{transform:translateY(-10px)}
+@keyframes float{
+  50%{transform:translateY(-15px);}
 }
 
-.hero h1{
-  font-size:clamp(42px,8vw,75px);
-  margin-bottom:15px;
-}
-
-.hero h1 span{
-  color:var(--accent);
-}
-
-.typing{
-  min-height:32px;
-  font-size:22px;
-  color:var(--accent);
+h1{
+  margin-top:25px;
+  font-size:55px;
+  letter-spacing:6px;
+  background:linear-gradient(90deg,#fff,#00c8ff,#9b5cff);
+  -webkit-background-clip:text;
+  color:transparent;
 }
 
 .hero p{
-  max-width:650px;
-  margin:20px 0;
-  color:var(--muted);
-  line-height:1.8;
+  margin-top:15px;
+  color:#aaa;
+  font-size:18px;
 }
 
-/* Buttons */
-
-.btn{
-  padding:13px 22px;
-  border:none;
-  border-radius:10px;
-  background:var(--accent);
-  color:#000;
-  font-weight:bold;
+button,
+.main-btn{
+  border:0;
   cursor:pointer;
-  transition:.3s;
+  display:inline-block;
+  margin-top:25px;
+  padding:13px 25px;
+  border-radius:30px;
+  background:linear-gradient(90deg,#00aaff,#7c2cff);
+  color:white;
+  text-decoration:none;
 }
 
-.btn:hover{
-  transform:translateY(-3px);
-  box-shadow:0 0 20px rgba(0,229,255,.4);
-}
-
-/* About */
-
-.about{
-  max-width:850px;
-  width:100%;
-  margin:auto;
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:20px;
-  padding:35px;
-  text-align:center;
-  line-height:1.9;
-  color:var(--muted);
-}
-
-.about h2{
-  color:var(--text);
-}
-
-/* History */
-
-.history-box{
-  max-width:850px;
-  width:100%;
-  margin:auto;
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:22px;
-  padding:40px 30px;
+/* Sections */
+section{
+  width:92%;
+  max-width:900px;
+  margin:35px auto;
+  padding:40px 25px;
+  border-radius:25px;
+  background:rgba(255,255,255,.06);
+  backdrop-filter:blur(15px);
+  border:1px solid rgba(255,255,255,.1);
   text-align:center;
 }
 
-.history-page{
-  display:none;
-  animation:historyFade .5s ease;
-}
-
-.history-page.active{
-  display:block;
-}
-
-.history-icon{
-  font-size:55px;
+h2{
+  color:#00c8ff;
   margin-bottom:20px;
 }
 
-.history-page h3{
-  color:var(--accent);
-  font-size:25px;
-  margin-bottom:18px;
-}
-
-.history-page p{
-  max-width:650px;
-  margin:auto;
-  color:var(--muted);
-  line-height:1.9;
-}
-
-.history-buttons{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  gap:20px;
-  margin-top:35px;
-}
-
-.history-buttons button{
-  padding:11px 18px;
-  border:1px solid var(--border);
-  background:var(--bg);
-  color:var(--text);
-  border-radius:10px;
-  cursor:pointer;
-}
-
-.history-buttons button:hover{
-  background:var(--accent);
-  color:#000;
-}
-
-#historyNumber{
-  color:var(--muted);
-}
-
-@keyframes historyFade{
-  from{
-    opacity:0;
-    transform:translateX(25px);
-  }
-  to{
-    opacity:1;
-    transform:translateX(0);
-  }
-}
-
-/* Posts */
-
-.posts{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:20px;
-}
-
-.post{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:18px;
-  padding:25px;
-  transition:.3s;
-}
-
-.post:hover{
-  transform:translateY(-8px);
-  border-color:var(--accent);
-}
-
-.post h3{
-  margin-bottom:12px;
-}
-
-.post p{
-  color:var(--muted);
+p{
+  color:#aaa;
   line-height:1.7;
 }
 
-.date{
-  display:block;
-  margin-top:15px;
-  color:var(--accent);
-  font-size:12px;
-}
-
-/* Gallery */
-
-.gallery{
+/* Cards */
+.cards{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:20px;
-}
-
-.gallery-item{
-  height:230px;
-  border-radius:18px;
-  border:1px solid var(--border);
-  background:linear-gradient(135deg,#111,#222);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:55px;
-  transition:.4s;
-}
-
-.gallery-item:hover{
-  transform:scale(1.04);
-  border-color:var(--accent);
-}
-
-/* Projects */
-
-.projects{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:20px;
-}
-
-.project{
-  background:var(--card);
-  border:1px solid var(--border);
-  padding:25px;
-  border-radius:18px;
-  transition:.3s;
-}
-
-.project:hover{
-  transform:translateY(-8px);
-  border-color:var(--accent);
-}
-
-.project h3{
-  margin-bottom:12px;
-}
-
-.project p{
-  color:var(--muted);
-  line-height:1.7;
-}
-
-.project .btn{
-  margin-top:15px;
-}
-
-/* Skills */
-
-.skills{
-  max-width:800px;
-  width:100%;
-  margin:auto;
-}
-
-.skill{
-  margin-bottom:22px;
-}
-
-.skill-head{
-  display:flex;
-  justify-content:space-between;
-  margin-bottom:8px;
-}
-
-.bar{
-  width:100%;
-  height:9px;
-  background:var(--border);
-  border-radius:20px;
-  overflow:hidden;
-}
-
-.progress{
-  height:100%;
-  width:0;
-  background:var(--accent);
-  border-radius:20px;
-  transition:width 1.5s ease;
-}
-
-/* Social */
-
-.social{
-  display:flex;
-  justify-content:center;
+  grid-template-columns:repeat(2,1fr);
   gap:15px;
-  flex-wrap:wrap;
 }
 
-.social a{
-  text-decoration:none;
-  color:var(--text);
-  background:var(--card);
-  border:1px solid var(--border);
-  padding:14px 20px;
-  border-radius:12px;
+.card{
+  padding:25px;
+  border-radius:20px;
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.1);
   transition:.3s;
 }
 
-.social a:hover{
-  color:#000;
-  background:var(--accent);
-  transform:translateY(-4px);
+.card:hover{
+  transform:translateY(-6px);
+  border-color:#00aaff;
+}
+
+/* Story */
+.story-buttons{
+  margin-top:20px;
+}
+
+.story-buttons button{
+  margin:5px;
 }
 
 /* Contact */
-
-.contact-box{
-  max-width:600px;
-  width:100%;
-  margin:auto;
-  display:flex;
-  flex-direction:column;
-  gap:15px;
-}
-
-input,
-textarea{
-  width:100%;
-  padding:14px;
-  border:1px solid var(--border);
-  background:var(--card);
-  color:var(--text);
-  border-radius:10px;
-  outline:none;
-}
-
-textarea{
-  min-height:150px;
-  resize:vertical;
-}
-
-input:focus,
-textarea:focus{
-  border-color:var(--accent);
-}
-
-.send-btn{
-  background:var(--accent);
-  color:#000;
-  font-weight:bold;
-}
-
-/* Project Window */
-
-#projectWindow{
-  display:none;
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.93);
-  z-index:2000;
-  padding:30px;
-  overflow:auto;
-}
-
-.project-app{
-  display:none;
-  max-width:500px;
-  margin:50px auto;
-  text-align:center;
-}
-
-.project-app h2{
-  margin-bottom:20px;
-}
-
-/* Calculator */
-
-#calcDisplay{
-  font-size:25px;
-  text-align:right;
-  margin:20px 0;
-}
-
-.calc-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:8px;
-}
-
-.calc-grid button{
-  font-size:20px;
-}
-
-/* Todo */
-
-#todoList{
-  list-style:none;
-  margin-top:20px;
-  text-align:left;
-}
-
-.todo-item{
-  padding:12px;
-  margin-bottom:8px;
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:10px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
-
-.todo-item.completed span{
-  text-decoration:line-through;
-  opacity:.5;
-}
-
-/* Game */
-
-.game-score{
-  font-size:60px;
-  color:var(--accent);
-  margin:20px;
-}
-
-.game-button{
-  font-size:25px;
-  padding:25px 45px;
+.social a{
+  display:inline-block;
+  margin:7px;
+  padding:12px 20px;
+  border-radius:25px;
+  border:1px solid #333;
+  color:white;
+  text-decoration:none;
 }
 
 /* Footer */
-
 footer{
   text-align:center;
-  padding:30px;
-  border-top:1px solid var(--border);
-  color:var(--muted);
+  padding:50px 20px;
+  color:#555;
 }
 
 /* Mobile */
+@media(max-width:600px){
 
-@media(max-width:800px){
-
-  nav{
-    padding:12px 4%;
+  h1{
+    font-size:40px;
   }
 
-  nav ul{
-    display:none;
+  .cards{
+    grid-template-columns:1fr;
   }
 
-  .hero h1{
-    font-size:43px;
-  }
-
-  section{
-    padding-left:5%;
-    padding-right:5%;
-  }
-
-  .title{
-    font-size:32px;
-  }
-
-  .history-box{
-    padding:30px 18px;
+  nav a{
+    margin:3px;
+    font-size:11px;
   }
 }
 </style>
@@ -657,568 +224,55 @@ footer{
 
 <body>
 
-<!-- Particles -->
-<div id="particles"></div>
-
-<!-- Navigation -->
 <nav>
-
-  <div class="logo">LIJNAHI</div>
-
-  <ul>
-    <li><a href="#home">Home</a></li>
-    <li><a href="#about">Profile</a></li>
-    <li><a href="#history">My History</a></li>
-    <li><a href="#posts">Posts</a></li>
-    <li><a href="#gallery">Gallery</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-
-  <div class="nav-controls">
-    <button class="nav-btn" onclick="toggleTheme()">🌙</button>
-    <button class="nav-btn" onclick="toggleLanguage()">EN / አማ</button>
-  </div>
-
+  <a href="#home">Home</a>
+  <a href="#about">Story</a>
+  <a href="#skills">Skills</a>
+  <a href="#projects">Projects</a>
+  <a href="#posts">Posts</a>
+  <a href="#contact">Contact</a>
 </nav>
 
-
 <!-- HOME -->
+<div class="hero" id="home">
 
-<section id="home" class="hero">
+  <div class="logo">L</div>
 
-  <div class="profile">L</div>
+  <h1>LIJNAHI</h1>
 
-  <h1 id="heroTitle">
-    Hi, I'm <span>LIJNAHI</span>
-  </h1>
+  <p>Creative • Learning • Technology</p>
 
-  <div class="typing" id="typing"></div>
-
-  <p id="heroText">
-    Welcome to my personal website.
-    This is my story, my ideas, my skills and my projects.
-  </p>
-
-  <a href="#history">
-    <button class="btn" id="startBtn">
-      Explore My History →
-    </button>
+  <a class="main-btn" href="#about">
+    Explore Website 🚀
   </a>
-
-</section>
-
-
-<!-- ABOUT -->
-
-<section id="about">
-
-  <h2 class="title">
-    About <span>Me</span>
-  </h2>
-
-  <div class="about">
-
-    <h2>👋 Hello!</h2>
-
-    <br>
-
-    <p>
-      My name is LIJNAHI.
-      I am interested in technology, websites,
-      design and creative projects.
-    </p>
-
-    <br>
-
-    <p>
-      I am learning new things every day
-      and building my skills step by step.
-    </p>
-
-  </div>
-
-</section>
-
-
-<!-- MY HISTORY -->
-
-<section id="history">
-
-  <h2 class="title">
-    My <span>History</span>
-  </h2>
-
-  <div class="history-box">
-
-    <div class="history-page active">
-
-      <div class="history-icon">🌱</div>
-
-      <h3>
-        Chapter 01 — My Beginning
-      </h3>
-
-      <p>
-        Every journey has a beginning.
-        My story started with dreams,
-        curiosity and the desire to learn something new.
-      </p>
-
-    </div>
-
-
-    <div class="history-page">
-
-      <div class="history-icon">📚</div>
-
-      <h3>
-        Chapter 02 — Learning
-      </h3>
-
-      <p>
-        I started learning about technology,
-        websites, design and different digital skills.
-        Every new lesson helped me grow.
-      </p>
-
-    </div>
-
-
-    <div class="history-page">
-
-      <div class="history-icon">💻</div>
-
-      <h3>
-        Chapter 03 — My Website
-      </h3>
-
-      <p>
-        One of my goals was to create my own website.
-        Step by step, I started building and improving
-        my projects.
-      </p>
-
-    </div>
-
-
-    <div class="history-page">
-
-      <div class="history-icon">🚀</div>
-
-      <h3>
-        Chapter 04 — My Future
-      </h3>
-
-      <p>
-        My journey is still going.
-        There are many things I want to learn,
-        create and achieve in the future.
-      </p>
-
-    </div>
-
-
-    <div class="history-buttons">
-
-      <button onclick="previousHistory()">
-        ← Previous
-      </button>
-
-      <span id="historyNumber">
-        1 / 4
-      </span>
-
-      <button onclick="nextHistory()">
-        Next →
-      </button>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- POSTS -->
-
-<section id="posts">
-
-  <h2 class="title">
-    My <span>Posts</span>
-  </h2>
-
-  <div class="posts">
-
-    <article class="post">
-
-      <h3>🚀 My First Website</h3>
-
-      <p>
-        Today I started building my own personal
-        website and learning how the web works.
-      </p>
-
-      <span class="date">
-        September 2026
-      </span>
-
-    </article>
-
-
-    <article class="post">
-
-      <h3>💡 New Ideas</h3>
-
-      <p>
-        I am working on new ideas and projects.
-        The journey is just beginning.
-      </p>
-
-      <span class="date">
-        September 2026
-      </span>
-
-    </article>
-
-
-    <article class="post">
-
-      <h3>🌌 Keep Going</h3>
-
-      <p>
-        Small progress every day can become
-        something big over time.
-      </p>
-
-      <span class="date">
-        September 2026
-      </span>
-
-    </article>
-
-  </div>
-
-</section>
-
-
-<!-- GALLERY -->
-
-<section id="gallery">
-
-  <h2 class="title">
-    My <span>Gallery</span>
-  </h2>
-
-  <div class="gallery">
-
-    <div class="gallery-item">📸</div>
-    <div class="gallery-item">🌌</div>
-    <div class="gallery-item">🎮</div>
-    <div class="gallery-item">💻</div>
-    <div class="gallery-item">🚀</div>
-    <div class="gallery-item">🔥</div>
-
-  </div>
-
-</section>
-
-
-<!-- PROJECTS -->
-
-<section id="projects">
-
-  <h2 class="title">
-    My <span>Projects</span>
-  </h2>
-
-  <div class="projects">
-
-    <!-- Website -->
-
-    <div class="project">
-
-      <h3>🌐 Personal Website</h3>
-
-      <p>
-        My personal website with animations,
-        history, posts and projects.
-      </p>
-
-      <button class="btn"
-        onclick="openProject('websiteProject')">
-        Open Project
-      </button>
-
-    </div>
-
-
-    <!-- Calculator -->
-
-    <div class="project">
-
-      <h3>🧮 Calculator</h3>
-
-      <p>
-        A working calculator for basic calculations.
-      </p>
-
-      <button class="btn"
-        onclick="openProject('calculator')">
-        Open Project
-      </button>
-
-    </div>
-
-
-    <!-- Todo -->
-
-    <div class="project">
-
-      <h3>📝 To-Do App</h3>
-
-      <p>
-        Add, complete and delete your daily tasks.
-      </p>
-
-      <button class="btn"
-        onclick="openProject('todo')">
-        Open Project
-      </button>
-
-    </div>
-
-
-    <!-- Game -->
-
-    <div class="project">
-
-      <h3>🎮 Mini Game</h3>
-
-      <p>
-        A simple click game made with JavaScript.
-      </p>
-
-      <button class="btn"
-        onclick="openProject('game')">
-        Play Game
-      </button>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- PROJECT WINDOW -->
-
-<div id="projectWindow">
-
-  <button class="btn"
-    onclick="closeProject()">
-    ✕ Close
-  </button>
-
-
-  <!-- Website Project -->
-
-  <div id="websiteProject"
-       class="project-app">
-
-    <h2>🌐 Personal Website</h2>
-
-    <p>
-      This is the website you are currently building.
-    </p>
-
-    <br>
-
-    <button class="btn"
-      onclick="closeProject()">
-      Back to Website
-    </button>
-
-  </div>
-
-
-  <!-- CALCULATOR -->
-
-  <div id="calculator"
-       class="project-app">
-
-    <h2>🧮 Calculator</h2>
-
-    <input
-      id="calcDisplay"
-      type="text"
-      readonly
-      placeholder="0"
-    >
-
-    <div class="calc-grid">
-
-      <button class="btn" onclick="calc('7')">7</button>
-      <button class="btn" onclick="calc('8')">8</button>
-      <button class="btn" onclick="calc('9')">9</button>
-      <button class="btn" onclick="calc('/')">÷</button>
-
-      <button class="btn" onclick="calc('4')">4</button>
-      <button class="btn" onclick="calc('5')">5</button>
-      <button class="btn" onclick="calc('6')">6</button>
-      <button class="btn" onclick="calc('*')">×</button>
-
-      <button class="btn" onclick="calc('1')">1</button>
-      <button class="btn" onclick="calc('2')">2</button>
-      <button class="btn" onclick="calc('3')">3</button>
-      <button class="btn" onclick="calc('-')">−</button>
-
-      <button class="btn" onclick="calc('0')">0</button>
-      <button class="btn" onclick="calc('.')">.</button>
-      <button class="btn" onclick="calculate()">=</button>
-      <button class="btn" onclick="calc('+')">+</button>
-
-    </div>
-
-    <br>
-
-    <button class="btn"
-      onclick="clearCalc()">
-      Clear
-    </button>
-
-  </div>
-
-
-  <!-- TODO APP -->
-
-  <div id="todo"
-       class="project-app">
-
-    <h2>📝 To-Do App</h2>
-
-    <input
-      id="todoInput"
-      type="text"
-      placeholder="Write a task..."
-    >
-
-    <br><br>
-
-    <button class="btn"
-      onclick="addTodo()">
-      Add Task
-    </button>
-
-    <ul id="todoList"></ul>
-
-  </div>
-
-
-  <!-- GAME -->
-
-  <div id="game"
-       class="project-app">
-
-    <h2>🎮 Click Game</h2>
-
-    <p>
-      Click the button as many times as you can!
-    </p>
-
-    <div id="score"
-         class="game-score">
-      0
-    </div>
-
-    <button class="btn game-button"
-      onclick="increaseScore()">
-      🎯 CLICK!
-    </button>
-
-    <br><br>
-
-    <button class="btn"
-      onclick="resetGame()">
-      Reset Game
-    </button>
-
-  </div>
 
 </div>
 
+<!-- MY STORY -->
+<section id="about">
 
-<!-- SKILLS -->
+  <h2>📖 My Story</h2>
 
-<section id="skills">
+  <div class="card">
 
-  <h2 class="title">
-    My <span>Skills</span>
-  </h2>
+    <h3 id="chapterTitle">Chapter 1 — Who I Am</h3>
 
-  <div class="skills">
+    <br>
 
-    <div class="skill">
+    <p id="chapterText">
+      I am LIJNAHI — a young person with big dreams,
+      curiosity and a passion for learning new things.
+    </p>
 
-      <div class="skill-head">
-        <span>HTML</span>
-        <span>90%</span>
-      </div>
+    <div class="story-buttons">
 
-      <div class="bar">
-        <div class="progress"
-             data-width="90%">
-        </div>
-      </div>
+      <button onclick="previousChapter()">
+        ⬅️ Previous
+      </button>
 
-    </div>
-
-
-    <div class="skill">
-
-      <div class="skill-head">
-        <span>CSS</span>
-        <span>80%</span>
-      </div>
-
-      <div class="bar">
-        <div class="progress"
-             data-width="80%">
-        </div>
-      </div>
-
-    </div>
-
-
-    <div class="skill">
-
-      <div class="skill-head">
-        <span>JavaScript</span>
-        <span>70%</span>
-      </div>
-
-      <div class="bar">
-        <div class="progress"
-             data-width="70%">
-        </div>
-      </div>
-
-    </div>
-
-
-    <div class="skill">
-
-      <div class="skill-head">
-        <span>Creative Design</span>
-        <span>85%</span>
-      </div>
-
-      <div class="bar">
-        <div class="progress"
-             data-width="85%">
-        </div>
-      </div>
+      <button onclick="nextChapter()">
+        Next ➡️
+      </button>
 
     </div>
 
@@ -1226,552 +280,206 @@ footer{
 
 </section>
 
+<!-- SKILLS -->
+<section id="skills">
 
-<!-- SOCIAL MEDIA -->
+  <h2>💻 My Skills</h2>
 
-<section id="social">
+  <div class="cards">
 
-  <h2 class="title">
-    <span>Social</span> Media
-  </h2>
+    <div class="card">
+      🌐
+      <h3>HTML</h3>
+      <p>Building websites</p>
+    </div>
+
+    <div class="card">
+      🎨
+      <h3>CSS</h3>
+      <p>Modern designs</p>
+    </div>
+
+    <div class="card">
+      ⚡
+      <h3>JavaScript</h3>
+      <p>Website interactions</p>
+    </div>
+
+    <div class="card">
+      🚀
+      <h3>Learning</h3>
+      <p>Always improving</p>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+
+  <h2>🚀 Projects</h2>
+
+  <div class="cards">
+
+    <div class="card">
+      🌐
+      <h3>Personal Website</h3>
+      <p>My LIJNAHI website.</p>
+    </div>
+
+    <div class="card">
+      🎮
+      <h3>Game Project</h3>
+      <p>Future game project.</p>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- POSTS -->
+<section id="posts">
+
+  <h2>📝 My Posts</h2>
+
+  <div class="card">
+
+    <h3>My First Post 🚀</h3>
+
+    <br>
+
+    <p>
+      Welcome to my personal website!
+      This is my first post.
+    </p>
+
+    <br>
+
+    <small>September 2026</small>
+
+  </div>
+
+  <br>
+
+  <div class="card">
+
+    <h3>New Post</h3>
+
+    <p>
+      More posts coming soon...
+    </p>
+
+  </div>
+
+</section>
+
+<!-- HOBBIES -->
+<section>
+
+  <h2>🎯 My Hobbies</h2>
+
+  <div class="cards">
+
+    <div class="card">🎮 Gaming</div>
+    <div class="card">🎵 Music</div>
+    <div class="card">💻 Technology</div>
+    <div class="card">✨ Creativity</div>
+
+  </div>
+
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+
+  <h2>📱 Contact</h2>
+
+  <p>
+    Thanks for visiting my website.
+  </p>
 
   <div class="social">
 
-    <a href="#" target="_blank">
-      📱 Telegram
-    </a>
-
-    <a href="#" target="_blank">
-      🎵 TikTok
-    </a>
-
-    <a href="#" target="_blank">
-      📷 Instagram
-    </a>
-
-    <a href="#" target="_blank">
-      💻 GitHub
-    </a>
+    <a href="#">Telegram</a>
+    <a href="#">TikTok</a>
+    <a href="#">Instagram</a>
 
   </div>
 
 </section>
 
-
-<!-- CONTACT -->
-
-<section id="contact">
-
-  <h2 class="title">
-    <span>Contact</span> Me
-  </h2>
-
-  <form
-    class="contact-box"
-    onsubmit="sendMessage(event)"
-  >
-
-    <input
-      type="text"
-      id="name"
-      placeholder="Your name"
-      required
-    >
-
-    <input
-      type="email"
-      id="email"
-      placeholder="Your email"
-      required
-    >
-
-    <textarea
-      id="message"
-      placeholder="Your message"
-      required
-    ></textarea>
-
-    <button
-      class="btn send-btn"
-      type="submit"
-    >
-      Send Message
-    </button>
-
-  </form>
-
-</section>
-
-
-<!-- FOOTER -->
-
 <footer>
-  © 2026 LIJNAHI — My Personal Website
+  © 2026 LIJNAHI
+  <br><br>
+  Made with 🖤 and creativity
 </footer>
-
 
 <script>
 
-/* =========================
-   DARK / LIGHT MODE
-========================= */
+/* My Story */
 
-function toggleTheme(){
+const chapters = [
 
-  document.body.classList.toggle("light");
+  {
+    title:"Chapter 1 — Who I Am",
+    text:"I am LIJNAHI — a young person with big dreams, curiosity and a passion for learning new things."
+  },
 
-  const light =
-    document.body.classList.contains("light");
+  {
+    title:"Chapter 2 — My Journey",
+    text:"My journey is still being written. I love technology, creativity, gaming, music and discovering new ideas."
+  },
 
-  localStorage.setItem(
-    "theme",
-    light ? "light" : "dark"
-  );
-}
+  {
+    title:"Chapter 3 — My Dreams",
+    text:"I want to keep learning, creating projects and turning my ideas into something meaningful."
+  },
 
-if(localStorage.getItem("theme")==="light"){
+  {
+    title:"Chapter 4 — My Future 🚀",
+    text:"The future is an open book. The best chapters of my story are still waiting to be written."
+  }
 
-  document.body.classList.add("light");
-
-}
-
-
-/* =========================
-   TYPING ANIMATION
-========================= */
-
-const words=[
-  "Web Developer",
-  "Designer",
-  "Creator",
-  "Dreamer"
 ];
 
-let wordIndex=0;
-let charIndex=0;
-let deleting=false;
+let currentChapter = 0;
 
-function typingEffect(){
+function showChapter(){
 
-  const typing =
-    document.getElementById("typing");
+  document.getElementById("chapterTitle").innerText =
+    chapters[currentChapter].title;
 
-  const word =
-    words[wordIndex];
+  document.getElementById("chapterText").innerText =
+    chapters[currentChapter].text;
 
-  if(!deleting){
+}
 
-    typing.textContent =
-      word.substring(0,charIndex+1);
+function nextChapter(){
 
-    charIndex++;
+  if(currentChapter < chapters.length - 1){
 
-    if(charIndex===word.length){
+    currentChapter++;
 
-      deleting=true;
+    showChapter();
 
-      setTimeout(
-        typingEffect,
-        1200
-      );
-
-      return;
-    }
-
-  }else{
-
-    typing.textContent =
-      word.substring(0,charIndex-1);
-
-    charIndex--;
-
-    if(charIndex===0){
-
-      deleting=false;
-
-      wordIndex++;
-
-      if(wordIndex===words.length){
-        wordIndex=0;
-      }
-    }
   }
 
-  setTimeout(
-    typingEffect,
-    deleting ? 60 : 100
-  );
 }
 
-typingEffect();
+function previousChapter(){
 
+  if(currentChapter > 0){
 
-/* =========================
-   PARTICLES
-========================= */
+    currentChapter--;
 
-const particleBox =
-  document.getElementById("particles");
+    showChapter();
 
-for(let i=0;i<80;i++){
-
-  const particle =
-    document.createElement("div");
-
-  particle.className="particle";
-
-  particle.style.left =
-    Math.random()*100+"%";
-
-  particle.style.animationDuration =
-    (5+Math.random()*8)+"s";
-
-  particle.style.animationDelay =
-    Math.random()*8+"s";
-
-  particleBox.appendChild(particle);
-}
-
-
-/* =========================
-   MY HISTORY
-========================= */
-
-let historyIndex=0;
-
-const historyPages =
-  document.querySelectorAll(".history-page");
-
-const historyNumber =
-  document.getElementById("historyNumber");
-
-function showHistory(index){
-
-  if(index<0){
-
-    historyIndex =
-      historyPages.length-1;
-
-  }else if(index>=historyPages.length){
-
-    historyIndex=0;
-
-  }else{
-
-    historyIndex=index;
   }
 
-  historyPages.forEach(
-    (page,i)=>{
-
-      page.classList.toggle(
-        "active",
-        i===historyIndex
-      );
-
-    }
-  );
-
-  historyNumber.textContent =
-    `${historyIndex+1} / ${historyPages.length}`;
-}
-
-function nextHistory(){
-
-  showHistory(
-    historyIndex+1
-  );
-}
-
-function previousHistory(){
-
-  showHistory(
-    historyIndex-1
-  );
-}
-
-
-/* =========================
-   SKILLS ANIMATION
-========================= */
-
-const progressBars =
-  document.querySelectorAll(".progress");
-
-const observer =
-  new IntersectionObserver(
-
-    (entries)=>{
-
-      entries.forEach(entry=>{
-
-        if(entry.isIntersecting){
-
-          const width =
-            entry.target.getAttribute(
-              "data-width"
-            );
-
-          entry.target.style.width =
-            width;
-        }
-
-      });
-
-    },
-
-    {threshold:.5}
-  );
-
-progressBars.forEach(
-  bar=>observer.observe(bar)
-);
-
-
-/* =========================
-   LANGUAGE
-========================= */
-
-let english=true;
-
-function toggleLanguage(){
-
-  english=!english;
-
-  if(!english){
-
-    document.documentElement.lang="am";
-
-    document.getElementById(
-      "heroTitle"
-    ).innerHTML=
-      "ሰላም፣ <span>LIJNAHI</span> ነኝ";
-
-    document.getElementById(
-      "heroText"
-    ).textContent=
-      "ወደ የግል websiteዬ እንኳን በደህና መጡ። ይህ የእኔ ታሪክ፣ ሀሳቦች፣ ችሎታዎች እና projects ናቸው።";
-
-    document.getElementById(
-      "startBtn"
-    ).textContent=
-      "ታሪኬን ይመልከቱ →";
-
-  }else{
-
-    document.documentElement.lang="en";
-
-    document.getElementById(
-      "heroTitle"
-    ).innerHTML=
-      "Hi, I'm <span>LIJNAHI</span>";
-
-    document.getElementById(
-      "heroText"
-    ).textContent=
-      "Welcome to my personal website. This is my story, my ideas, my skills and my projects.";
-
-    document.getElementById(
-      "startBtn"
-    ).textContent=
-      "Explore My History →";
-  }
-}
-
-
-/* =========================
-   PROJECT WINDOW
-========================= */
-
-function openProject(project){
-
-  document.getElementById(
-    "projectWindow"
-  ).style.display="block";
-
-  document.querySelectorAll(
-    ".project-app"
-  ).forEach(app=>{
-
-    app.style.display="none";
-
-  });
-
-  document.getElementById(
-    project
-  ).style.display="block";
-}
-
-
-function closeProject(){
-
-  document.getElementById(
-    "projectWindow"
-  ).style.display="none";
-}
-
-
-/* =========================
-   CALCULATOR
-========================= */
-
-function calc(value){
-
-  const display =
-    document.getElementById(
-      "calcDisplay"
-    );
-
-  display.value += value;
-}
-
-
-function clearCalc(){
-
-  document.getElementById(
-    "calcDisplay"
-  ).value="";
-}
-
-
-function calculate(){
-
-  const display =
-    document.getElementById(
-      "calcDisplay"
-    );
-
-  try{
-
-    if(!display.value) return;
-
-    display.value =
-      Function(
-        "return " +
-        display.value
-      )();
-
-  }catch{
-
-    display.value="Error";
-
-  }
-}
-
-
-/* =========================
-   TODO APP
-========================= */
-
-function addTodo(){
-
-  const input =
-    document.getElementById(
-      "todoInput"
-    );
-
-  const text =
-    input.value.trim();
-
-  if(text==="") return;
-
-  const li =
-    document.createElement("li");
-
-  li.className="todo-item";
-
-  const span =
-    document.createElement("span");
-
-  span.textContent=text;
-
-  span.onclick=function(){
-
-    li.classList.toggle(
-      "completed"
-    );
-
-  };
-
-
-  const deleteButton =
-    document.createElement("button");
-
-  deleteButton.textContent="❌";
-
-  deleteButton.style.border="none";
-  deleteButton.style.background="transparent";
-  deleteButton.style.cursor="pointer";
-
-  deleteButton.onclick=function(){
-
-    li.remove();
-
-  };
-
-
-  li.appendChild(span);
-
-  li.appendChild(
-    deleteButton
-  );
-
-  document.getElementById(
-    "todoList"
-  ).appendChild(li);
-
-  input.value="";
-}
-
-
-/* =========================
-   MINI GAME
-========================= */
-
-let score=0;
-
-function increaseScore(){
-
-  score++;
-
-  document.getElementById(
-    "score"
-  ).textContent=score;
-}
-
-
-function resetGame(){
-
-  score=0;
-
-  document.getElementById(
-    "score"
-  ).textContent=score;
-}
-
-
-/* =========================
-   CONTACT
-========================= */
-
-function sendMessage(event){
-
-  event.preventDefault();
-
-  const name =
-    document.getElementById(
-      "name"
-    ).value;
-
-  alert(
-    "Thank you, "+name+
-    "! Your message has been received."
-  );
-
-  event.target.reset();
 }
 
 </script>
 
 </body>
-   </html>
+</html>
