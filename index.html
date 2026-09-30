@@ -3,9 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>LIJNAHI</title>
 
 <style>
+
+/* =========================
+   BASIC
+========================= */
+
 *{
   margin:0;
   padding:0;
@@ -18,53 +24,71 @@ body{
   background:#02030a;
   color:white;
   overflow-x:hidden;
+  transition:.4s;
 }
 
-/* Moving background */
+/* =========================
+   MOVING BACKGROUND
+========================= */
+
 body::before,
 body::after{
   content:"";
   position:fixed;
-  width:300px;
-  height:300px;
+  width:320px;
+  height:320px;
   border-radius:50%;
-  filter:blur(100px);
+  filter:blur(110px);
   z-index:-1;
   animation:move 8s infinite alternate;
 }
 
 body::before{
   background:#00aaff;
-  top:-100px;
-  left:-100px;
+  top:-120px;
+  left:-120px;
   opacity:.25;
 }
 
 body::after{
   background:#8b2cff;
-  right:-100px;
-  bottom:-100px;
+  right:-120px;
+  bottom:-120px;
   opacity:.2;
   animation-delay:2s;
 }
 
 @keyframes move{
-  from{transform:translate(0,0);}
-  to{transform:translate(180px,150px);}
+
+  from{
+    transform:translate(0,0);
+  }
+
+  to{
+    transform:translate(180px,160px);
+  }
+
 }
 
-/* Navigation */
+/* =========================
+   NAVIGATION
+========================= */
+
 nav{
   position:fixed;
   top:15px;
   left:50%;
   transform:translateX(-50%);
-  width:92%;
-  max-width:900px;
-  padding:15px;
+  width:94%;
+  max-width:1000px;
+  padding:14px;
   border-radius:30px;
+
   background:rgba(255,255,255,.08);
   backdrop-filter:blur(15px);
+
+  border:1px solid rgba(255,255,255,.1);
+
   text-align:center;
   z-index:100;
 }
@@ -72,206 +96,574 @@ nav{
 nav a{
   color:#ddd;
   text-decoration:none;
-  margin:0 8px;
-  font-size:13px;
+  margin:0 6px;
+  font-size:12px;
 }
 
-/* Home */
+nav a:hover{
+  color:#00c8ff;
+}
+
+/* =========================
+   TOP BUTTONS
+========================= */
+
+.top-buttons{
+  position:fixed;
+  right:15px;
+  bottom:15px;
+  display:flex;
+  gap:8px;
+  z-index:200;
+}
+
+.top-buttons button{
+  border:1px solid #333;
+  background:rgba(0,0,0,.75);
+  color:white;
+  padding:10px 13px;
+  border-radius:25px;
+  cursor:pointer;
+}
+
+/* =========================
+   HOME
+========================= */
+
 .hero{
   min-height:100vh;
+
   display:flex;
   flex-direction:column;
   justify-content:center;
   align-items:center;
+
   text-align:center;
-  padding:100px 20px;
+
+  padding:100px 20px 50px;
+}
+
+.badge{
+  color:#00c8ff;
+
+  border:1px solid #00aaff;
+
+  padding:8px 18px;
+
+  border-radius:30px;
+
+  margin-bottom:25px;
 }
 
 .logo{
   width:120px;
   height:120px;
+
   border-radius:30px;
-  background:linear-gradient(135deg,#00c8ff,#7c2cff);
+
+  background:
+  linear-gradient(
+    135deg,
+    #00c8ff,
+    #7c2cff
+  );
+
   display:flex;
   align-items:center;
   justify-content:center;
+
   font-size:55px;
   font-weight:bold;
-  box-shadow:0 0 40px #008cff;
+
+  box-shadow:
+  0 0 45px
+  rgba(0,170,255,.5);
+
   animation:float 3s infinite;
 }
 
 @keyframes float{
-  50%{transform:translateY(-15px);}
+
+  50%{
+    transform:translateY(-15px);
+  }
+
 }
 
 h1{
   margin-top:25px;
+
   font-size:55px;
+
   letter-spacing:6px;
-  background:linear-gradient(90deg,#fff,#00c8ff,#9b5cff);
+
+  background:
+  linear-gradient(
+    90deg,
+    #fff,
+    #00c8ff,
+    #9b5cff
+  );
+
   -webkit-background-clip:text;
+
   color:transparent;
 }
 
 .hero p{
   margin-top:15px;
+
   color:#aaa;
+
   font-size:18px;
 }
 
-button,
 .main-btn{
-  border:0;
-  cursor:pointer;
   display:inline-block;
-  margin-top:25px;
-  padding:13px 25px;
+
+  margin-top:30px;
+
+  padding:14px 28px;
+
   border-radius:30px;
-  background:linear-gradient(90deg,#00aaff,#7c2cff);
+
+  background:
+  linear-gradient(
+    90deg,
+    #00aaff,
+    #7c2cff
+  );
+
   color:white;
+
   text-decoration:none;
+
+  transition:.3s;
 }
 
-/* Sections */
+.main-btn:hover{
+  transform:scale(1.06);
+}
+
+/* =========================
+   SECTIONS
+========================= */
+
 section{
   width:92%;
   max-width:900px;
+
   margin:35px auto;
+
   padding:40px 25px;
+
   border-radius:25px;
-  background:rgba(255,255,255,.06);
+
+  background:
+  rgba(255,255,255,.06);
+
   backdrop-filter:blur(15px);
-  border:1px solid rgba(255,255,255,.1);
+
+  border:
+  1px solid
+  rgba(255,255,255,.1);
+
   text-align:center;
 }
 
 h2{
   color:#00c8ff;
+
   margin-bottom:20px;
 }
 
 p{
   color:#aaa;
-  line-height:1.7;
+
+  line-height:1.8;
 }
 
-/* Cards */
+/* =========================
+   CARDS
+========================= */
+
 .cards{
   display:grid;
-  grid-template-columns:repeat(2,1fr);
+
+  grid-template-columns:
+  repeat(2,1fr);
+
   gap:15px;
+
+  margin-top:20px;
 }
 
 .card{
   padding:25px;
+
   border-radius:20px;
-  background:rgba(255,255,255,.05);
-  border:1px solid rgba(255,255,255,.1);
+
+  background:
+  rgba(255,255,255,.05);
+
+  border:
+  1px solid
+  rgba(255,255,255,.1);
+
   transition:.3s;
 }
 
 .card:hover{
-  transform:translateY(-6px);
+  transform:translateY(-7px);
+
   border-color:#00aaff;
+
+  box-shadow:
+  0 10px 30px
+  rgba(0,170,255,.15);
 }
 
-/* Story */
+/* =========================
+   STORY
+========================= */
+
 .story-buttons{
-  margin-top:20px;
+  margin-top:25px;
 }
 
 .story-buttons button{
+  border:0;
+
+  padding:12px 20px;
+
   margin:5px;
+
+  border-radius:25px;
+
+  background:
+  linear-gradient(
+    90deg,
+    #00aaff,
+    #7c2cff
+  );
+
+  color:white;
+
+  cursor:pointer;
 }
 
-/* Contact */
+/* =========================
+   PHOTO GALLERY
+========================= */
+
+.gallery{
+  display:grid;
+
+  grid-template-columns:
+  repeat(3,1fr);
+
+  gap:15px;
+
+  margin-top:20px;
+}
+
+.gallery img{
+  width:100%;
+
+  height:280px;
+
+  object-fit:cover;
+
+  border-radius:20px;
+
+  border:
+  1px solid
+  rgba(255,255,255,.15);
+
+  transition:.4s;
+}
+
+.gallery img:hover{
+  transform:
+  scale(1.04)
+  translateY(-5px);
+
+  box-shadow:
+  0 15px 40px
+  rgba(0,170,255,.25);
+}
+
+/* =========================
+   CONTACT
+========================= */
+
+.social{
+  margin-top:25px;
+}
+
 .social a{
   display:inline-block;
+
   margin:7px;
+
   padding:12px 20px;
+
   border-radius:25px;
+
   border:1px solid #333;
+
   color:white;
+
   text-decoration:none;
+
+  transition:.3s;
 }
 
-/* Footer */
+.social a:hover{
+  border-color:#00aaff;
+
+  color:#00c8ff;
+
+  transform:translateY(-3px);
+}
+
+/* =========================
+   FOOTER
+========================= */
+
 footer{
   text-align:center;
-  padding:50px 20px;
+
+  padding:60px 20px;
+
   color:#555;
 }
 
-/* Mobile */
-@media(max-width:600px){
+/* =========================
+   LIGHT MODE
+========================= */
+
+body.light{
+  background:#f4f7fb;
+
+  color:#111;
+}
+
+body.light nav{
+  background:
+  rgba(255,255,255,.85);
+}
+
+body.light nav a{
+  color:#222;
+}
+
+body.light section{
+  background:
+  rgba(255,255,255,.8);
+
+  border-color:#ddd;
+}
+
+body.light .card{
+  background:white;
+
+  border-color:#ddd;
+}
+
+body.light p{
+  color:#555;
+}
+
+body.light .top-buttons button{
+  background:white;
+
+  color:#111;
+
+  border-color:#ddd;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:700px){
 
   h1{
     font-size:40px;
+  }
+
+  nav{
+    padding:11px 4px;
+  }
+
+  nav a{
+    margin:2px;
+
+    font-size:9px;
   }
 
   .cards{
     grid-template-columns:1fr;
   }
 
-  nav a{
-    margin:3px;
-    font-size:11px;
+  .gallery{
+    grid-template-columns:1fr;
   }
+
+  .gallery img{
+    height:350px;
+  }
+
+  .logo{
+    width:105px;
+    height:105px;
+
+    font-size:45px;
+  }
+
 }
+
 </style>
 </head>
 
+
 <body>
 
+
+<!-- =========================
+     TOP BUTTONS
+========================= -->
+
+<div class="top-buttons">
+
+  <button onclick="toggleTheme()">
+    🌙 / ☀️
+  </button>
+
+  <button onclick="toggleLanguage()">
+    አማ / EN
+  </button>
+
+</div>
+
+
+<!-- =========================
+     NAVIGATION
+========================= -->
+
 <nav>
+
   <a href="#home">Home</a>
+
   <a href="#about">Story</a>
+
   <a href="#skills">Skills</a>
+
   <a href="#projects">Projects</a>
+
   <a href="#posts">Posts</a>
+
+  <a href="#photos">Photos</a>
+
   <a href="#contact">Contact</a>
+
 </nav>
 
-<!-- HOME -->
+
+<!-- =========================
+     HOME
+========================= -->
+
 <div class="hero" id="home">
 
-  <div class="logo">L</div>
+  <div class="badge" id="welcome">
 
-  <h1>LIJNAHI</h1>
+    ✨ Welcome to my world
 
-  <p>Creative • Learning • Technology</p>
+  </div>
 
-  <a class="main-btn" href="#about">
+
+  <div class="logo">
+
+    L
+
+  </div>
+
+
+  <h1>
+
+    LIJNAHI
+
+  </h1>
+
+
+  <p id="tagline">
+
+    Creative • Learning • Technology
+
+  </p>
+
+
+  <a
+    class="main-btn"
+    href="#about"
+    id="explore">
+
     Explore Website 🚀
+
   </a>
 
 </div>
 
-<!-- MY STORY -->
+
+<!-- =========================
+     MY STORY
+========================= -->
+
 <section id="about">
 
-  <h2>📖 My Story</h2>
+  <h2 id="storyHeading">
+
+    📖 My Story
+
+  </h2>
+
 
   <div class="card">
 
-    <h3 id="chapterTitle">Chapter 1 — Who I Am</h3>
+    <h3 id="chapterTitle">
+
+      Chapter 1 — Who I Am
+
+    </h3>
+
 
     <br>
 
+
     <p id="chapterText">
-      I am LIJNAHI — a young person with big dreams,
-      curiosity and a passion for learning new things.
+
+      I am LIJNAHI — a young person
+      with big dreams, curiosity and
+      a passion for learning new things.
+
     </p>
+
 
     <div class="story-buttons">
 
       <button onclick="previousChapter()">
+
         ⬅️ Previous
+
       </button>
+
 
       <button onclick="nextChapter()">
+
         Next ➡️
+
       </button>
 
     </div>
@@ -280,184 +672,446 @@ footer{
 
 </section>
 
-<!-- SKILLS -->
+
+<!-- =========================
+     SKILLS
+========================= -->
+
 <section id="skills">
 
-  <h2>💻 My Skills</h2>
+  <h2>
+
+    💻 My Skills
+
+  </h2>
+
 
   <div class="cards">
 
+
     <div class="card">
+
       🌐
-      <h3>HTML</h3>
-      <p>Building websites</p>
+
+      <h3>
+
+        HTML
+
+      </h3>
+
+      <p>
+
+        Building websites
+
+      </p>
+
     </div>
 
+
     <div class="card">
+
       🎨
-      <h3>CSS</h3>
-      <p>Modern designs</p>
+
+      <h3>
+
+        CSS
+
+      </h3>
+
+      <p>
+
+        Modern website design
+
+      </p>
+
     </div>
 
+
     <div class="card">
+
       ⚡
-      <h3>JavaScript</h3>
-      <p>Website interactions</p>
+
+      <h3>
+
+        JavaScript
+
+      </h3>
+
+      <p>
+
+        Website interaction
+
+      </p>
+
     </div>
 
+
     <div class="card">
+
       🚀
-      <h3>Learning</h3>
-      <p>Always improving</p>
+
+      <h3>
+
+        Learning
+
+      </h3>
+
+      <p>
+
+        Always improving
+
+      </p>
+
     </div>
+
 
   </div>
 
 </section>
 
-<!-- PROJECTS -->
+
+<!-- =========================
+     PROJECTS
+========================= -->
+
 <section id="projects">
 
-  <h2>🚀 Projects</h2>
+  <h2>
+
+    🚀 Projects
+
+  </h2>
+
 
   <div class="cards">
 
-    <div class="card">
-      🌐
-      <h3>Personal Website</h3>
-      <p>My LIJNAHI website.</p>
-    </div>
 
     <div class="card">
-      🎮
-      <h3>Game Project</h3>
-      <p>Future game project.</p>
+
+      🌐
+
+      <h3>
+
+        LIJNAHI Website
+
+      </h3>
+
+      <p>
+
+        My personal website project.
+
+      </p>
+
     </div>
+
+
+    <div class="card">
+
+      🎮
+
+      <h3>
+
+        Game Project
+
+      </h3>
+
+      <p>
+
+        Future game development project.
+
+      </p>
+
+    </div>
+
 
   </div>
 
 </section>
 
-<!-- POSTS -->
+
+<!-- =========================
+     POSTS
+========================= -->
+
 <section id="posts">
 
-  <h2>📝 My Posts</h2>
+  <h2>
+
+    📝 My Posts
+
+  </h2>
+
 
   <div class="card">
 
-    <h3>My First Post 🚀</h3>
+    <h3>
+
+      My First Post 🚀
+
+    </h3>
+
 
     <br>
+
 
     <p>
+
       Welcome to my personal website!
       This is my first post.
+
     </p>
+
 
     <br>
 
-    <small>September 2026</small>
+
+    <small>
+
+      September 2026
+
+    </small>
 
   </div>
+
 
   <br>
 
+
   <div class="card">
 
-    <h3>New Post</h3>
+    <h3>
+
+      New Post
+
+    </h3>
+
 
     <p>
+
       More posts coming soon...
+
     </p>
 
   </div>
 
 </section>
 
-<!-- HOBBIES -->
+
+<!-- =========================
+     HOBBIES
+========================= -->
+
 <section>
 
-  <h2>🎯 My Hobbies</h2>
+  <h2>
+
+    🎯 My Hobbies
+
+  </h2>
+
 
   <div class="cards">
 
-    <div class="card">🎮 Gaming</div>
-    <div class="card">🎵 Music</div>
-    <div class="card">💻 Technology</div>
-    <div class="card">✨ Creativity</div>
+
+    <div class="card">
+
+      🎮 Gaming
+
+    </div>
+
+
+    <div class="card">
+
+      🎵 Music
+
+    </div>
+
+
+    <div class="card">
+
+      💻 Technology
+
+    </div>
+
+
+    <div class="card">
+
+      ✨ Creativity
+
+    </div>
+
 
   </div>
 
 </section>
 
-<!-- CONTACT -->
-<section id="contact">
 
-  <h2>📱 Contact</h2>
+<!-- =========================
+     MY PHOTOS
+========================= -->
+
+<section id="photos">
+
+  <h2>
+
+    🖼️ My Photos
+
+  </h2>
+
 
   <p>
-    Thanks for visiting my website.
+
+    Some of my favorite photos.
+
   </p>
+
+
+  <div class="gallery">
+
+
+    <img
+      src="1000089477.jpg"
+      alt="LIJNAHI Photo 1"
+    >
+
+
+    <img
+      src="1000089449.jpg"
+      alt="LIJNAHI Photo 2"
+    >
+
+
+    <img
+      src="1000089473.jpg"
+      alt="LIJNAHI Photo 3"
+    >
+
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     CONTACT
+========================= -->
+
+<section id="contact">
+
+  <h2>
+
+    📱 Contact Me
+
+  </h2>
+
+
+  <p>
+
+    You can find me on Telegram.
+
+  </p>
+
 
   <div class="social">
 
-    <a href="#">Telegram</a>
-    <a href="#">TikTok</a>
-    <a href="#">Instagram</a>
+
+    <a
+      href="https://t.me/NInate21"
+      target="_blank">
+
+      Telegram — @NInate21
+
+    </a>
+
 
   </div>
 
 </section>
 
+
+<!-- =========================
+     FOOTER
+========================= -->
+
 <footer>
+
   © 2026 LIJNAHI
-  <br><br>
+
+  <br>
+  <br>
+
   Made with 🖤 and creativity
+
 </footer>
+
 
 <script>
 
-/* My Story */
+/* =========================
+   MY STORY
+========================= */
 
 const chapters = [
 
   {
     title:"Chapter 1 — Who I Am",
-    text:"I am LIJNAHI — a young person with big dreams, curiosity and a passion for learning new things."
+
+    text:
+    "I am LIJNAHI — a young person with big dreams, curiosity and a passion for learning new things."
   },
+
 
   {
     title:"Chapter 2 — My Journey",
-    text:"My journey is still being written. I love technology, creativity, gaming, music and discovering new ideas."
+
+    text:
+    "My journey is still being written. I love technology, creativity, gaming, music and discovering new ideas."
   },
+
 
   {
     title:"Chapter 3 — My Dreams",
-    text:"I want to keep learning, creating projects and turning my ideas into something meaningful."
+
+    text:
+    "I want to keep learning, creating projects and turning my ideas into something meaningful."
   },
+
 
   {
     title:"Chapter 4 — My Future 🚀",
-    text:"The future is an open book. The best chapters of my story are still waiting to be written."
+
+    text:
+    "The future is an open book. The best chapters of my story are still waiting to be written."
   }
 
 ];
 
+
 let currentChapter = 0;
+
 
 function showChapter(){
 
-  document.getElementById("chapterTitle").innerText =
+  document.getElementById(
+    "chapterTitle"
+  ).innerText =
     chapters[currentChapter].title;
 
-  document.getElementById("chapterText").innerText =
+
+  document.getElementById(
+    "chapterText"
+  ).innerText =
     chapters[currentChapter].text;
 
 }
 
+
 function nextChapter(){
 
-  if(currentChapter < chapters.length - 1){
+  if(
+    currentChapter <
+    chapters.length - 1
+  ){
 
     currentChapter++;
 
@@ -467,9 +1121,12 @@ function nextChapter(){
 
 }
 
+
 function previousChapter(){
 
-  if(currentChapter > 0){
+  if(
+    currentChapter > 0
+  ){
 
     currentChapter--;
 
@@ -479,7 +1136,91 @@ function previousChapter(){
 
 }
 
+
+/* =========================
+   DARK / LIGHT
+========================= */
+
+function toggleTheme(){
+
+  document.body.classList.toggle(
+    "light"
+  );
+
+}
+
+
+/* =========================
+   LANGUAGE
+========================= */
+
+let amharic = false;
+
+
+function toggleLanguage(){
+
+  amharic = !amharic;
+
+
+  if(amharic){
+
+    document.getElementById(
+      "welcome"
+    ).innerText =
+      "✨ ወደ ዓለሜ እንኳን በደህና መጡ";
+
+
+    document.getElementById(
+      "tagline"
+    ).innerText =
+      "ፈጠራ • ትምህርት • ቴክኖሎጂ";
+
+
+    document.getElementById(
+      "explore"
+    ).innerText =
+      "Website ይመልከቱ 🚀";
+
+
+    document.getElementById(
+      "storyHeading"
+    ).innerText =
+      "📖 የእኔ ታሪክ";
+
+  }
+
+
+  else{
+
+    document.getElementById(
+      "welcome"
+    ).innerText =
+      "✨ Welcome to my world";
+
+
+    document.getElementById(
+      "tagline"
+    ).innerText =
+      "Creative • Learning • Technology";
+
+
+    document.getElementById(
+      "explore"
+    ).innerText =
+      "Explore Website 🚀";
+
+
+    document.getElementById(
+      "storyHeading"
+    ).innerText =
+      "📖 My Story";
+
+  }
+
+}
+
 </script>
 
+
 </body>
-</html>
+      </html>
