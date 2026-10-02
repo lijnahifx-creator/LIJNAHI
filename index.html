@@ -1,314 +1,923 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LIJNAHI | Portfolio</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      scroll-behavior: smooth;
+<title>LIJNAHI | Portfolio</title>
+
+<style>
+/* =========================
+   BASIC
+========================= */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+:root{
+    --bg:#050505;
+    --card:#101010;
+    --text:#ffffff;
+    --muted:#aaaaaa;
+    --accent:#00ffd5;
+    --border:#202020;
+}
+
+body.light{
+    --bg:#f5f5f5;
+    --card:#ffffff;
+    --text:#111111;
+    --muted:#555555;
+    --border:#dddddd;
+}
+
+body{
+    font-family:Arial, sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    transition:.3s;
+    overflow-x:hidden;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+.container{
+    width:90%;
+    max-width:1100px;
+    margin:auto;
+}
+
+/* =========================
+   LOADING SCREEN
+========================= */
+#loader{
+    position:fixed;
+    inset:0;
+    background:#050505;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+    transition:opacity .6s, visibility .6s;
+}
+
+#loader.hide{
+    opacity:0;
+    visibility:hidden;
+}
+
+.spinner{
+    width:55px;
+    height:55px;
+    border:4px solid #222;
+    border-top:4px solid var(--accent);
+    border-radius:50%;
+    animation:spin 1s linear infinite;
+}
+
+@keyframes spin{
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+/* =========================
+   HEADER
+========================= */
+header{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:1000;
+    background:rgba(5,5,5,.85);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--border);
+}
+
+body.light header{
+    background:rgba(255,255,255,.85);
+}
+
+.nav{
+    height:70px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.logo{
+    font-size:24px;
+    font-weight:bold;
+    color:var(--accent);
+    letter-spacing:2px;
+}
+
+.nav-links{
+    display:flex;
+    gap:25px;
+    list-style:none;
+}
+
+.nav-links a{
+    color:var(--text);
+    font-size:15px;
+    transition:.3s;
+}
+
+.nav-links a:hover{
+    color:var(--accent);
+}
+
+.nav-buttons{
+    display:flex;
+    gap:8px;
+}
+
+.nav-btn{
+    background:transparent;
+    border:1px solid var(--border);
+    color:var(--text);
+    padding:8px 11px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:13px;
+}
+
+.nav-btn:hover{
+    border-color:var(--accent);
+    color:var(--accent);
+}
+
+.menu-btn{
+    display:none;
+    background:none;
+    border:none;
+    color:var(--text);
+    font-size:28px;
+    cursor:pointer;
+}
+
+/* =========================
+   HERO
+========================= */
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    padding-top:70px;
+    position:relative;
+}
+
+.hero::before{
+    content:"";
+    position:absolute;
+    width:300px;
+    height:300px;
+    background:var(--accent);
+    filter:blur(150px);
+    opacity:.12;
+    top:20%;
+    left:10%;
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+}
+
+.small-title{
+    color:var(--accent);
+    font-size:16px;
+    margin-bottom:15px;
+}
+
+.hero h1{
+    font-size:clamp(45px,9vw,85px);
+    line-height:1;
+    margin-bottom:20px;
+}
+
+.hero h1 span{
+    color:var(--accent);
+}
+
+.hero p{
+    color:var(--muted);
+    max-width:600px;
+    font-size:18px;
+    line-height:1.7;
+}
+
+.hero-buttons{
+    margin-top:30px;
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    padding:13px 22px;
+    border-radius:8px;
+    border:1px solid var(--accent);
+    color:var(--accent);
+    transition:.3s;
+    display:inline-block;
+}
+
+.btn:hover{
+    background:var(--accent);
+    color:#000;
+    transform:translateY(-3px);
+}
+
+.btn.primary{
+    background:var(--accent);
+    color:#000;
+}
+
+/* =========================
+   SECTIONS
+========================= */
+section{
+    padding:100px 0;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:50px;
+}
+
+.section-title h2{
+    font-size:38px;
+    margin-bottom:10px;
+}
+
+.section-title span{
+    color:var(--accent);
+}
+
+.section-title p{
+    color:var(--muted);
+}
+
+/* =========================
+   ABOUT
+========================= */
+.about-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:30px;
+}
+
+.about-card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:30px;
+}
+
+.about-card h3{
+    color:var(--accent);
+    margin-bottom:15px;
+}
+
+.about-card p{
+    color:var(--muted);
+    line-height:1.8;
+}
+
+/* =========================
+   SKILLS
+========================= */
+.skills-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.skill{
+    background:var(--card);
+    border:1px solid var(--border);
+    padding:25px;
+    border-radius:15px;
+    text-align:center;
+    transition:.3s;
+}
+
+.skill:hover{
+    transform:translateY(-8px);
+    border-color:var(--accent);
+}
+
+.skill-icon{
+    font-size:35px;
+    margin-bottom:15px;
+}
+
+.skill h3{
+    margin-bottom:8px;
+}
+
+.skill p{
+    color:var(--muted);
+    font-size:14px;
+}
+
+/* =========================
+   PROJECTS
+========================= */
+.projects-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:25px;
+}
+
+.project{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:30px;
+    transition:.3s;
+}
+
+.project:hover{
+    transform:translateY(-8px);
+    border-color:var(--accent);
+}
+
+.project-number{
+    color:var(--accent);
+    font-size:14px;
+    margin-bottom:20px;
+}
+
+.project h3{
+    font-size:24px;
+    margin-bottom:12px;
+}
+
+.project p{
+    color:var(--muted);
+    line-height:1.7;
+    margin-bottom:20px;
+}
+
+.project-link{
+    color:var(--accent);
+}
+
+/* =========================
+   CONTACT
+========================= */
+.contact-box{
+    text-align:center;
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:20px;
+    padding:50px 25px;
+}
+
+.contact-box h2{
+    font-size:35px;
+    margin-bottom:15px;
+}
+
+.contact-box p{
+    color:var(--muted);
+    margin-bottom:25px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+footer{
+    border-top:1px solid var(--border);
+    padding:25px;
+    text-align:center;
+    color:var(--muted);
+}
+
+footer span{
+    color:var(--accent);
+}
+
+/* =========================
+   ANIMATION
+========================= */
+.reveal{
+    opacity:0;
+    transform:translateY(40px);
+    transition:opacity .8s, transform .8s;
+}
+
+.reveal.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* =========================
+   MOBILE
+========================= */
+@media(max-width:768px){
+
+    .nav-links{
+        position:absolute;
+        top:70px;
+        left:0;
+        width:100%;
+        background:var(--bg);
+        border-bottom:1px solid var(--border);
+        display:none;
+        flex-direction:column;
+        padding:20px;
+        text-align:center;
     }
 
-    body {
-      background: #000;
-      color: #fff;
-      font-family: Arial, sans-serif;
+    .nav-links.active{
+        display:flex;
     }
 
-    nav {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      padding: 18px 7%;
-      background: rgba(0,0,0,.95);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 100;
-      border-bottom: 1px solid #222;
+    .menu-btn{
+        display:block;
     }
 
-    .logo {
-      color: #00ffd5;
-      font-size: 24px;
-      font-weight: bold;
+    .nav-buttons{
+        margin-left:auto;
+        margin-right:10px;
     }
 
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin-left: 15px;
-      font-size: 14px;
+    .hero h1{
+        font-size:52px;
     }
 
-    nav a:hover {
-      color: #00ffd5;
+    .hero p{
+        font-size:16px;
     }
 
-    section {
-      padding: 100px 20px;
-      text-align: center;
-      max-width: 1000px;
-      margin: auto;
+    .about-grid,
+    .projects-grid{
+        grid-template-columns:1fr;
     }
 
-    .home {
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+    .skills-grid{
+        grid-template-columns:1fr 1fr;
     }
 
-    .home h1 {
-      font-size: 55px;
-      margin-bottom: 15px;
+    section{
+        padding:80px 0;
+    }
+}
+
+@media(max-width:450px){
+
+    .skills-grid{
+        grid-template-columns:1fr;
     }
 
-    .home h1 span {
-      color: #00ffd5;
+    .logo{
+        font-size:20px;
     }
 
-    .home p {
-      color: #aaa;
-      font-size: 18px;
-      margin-bottom: 30px;
+    .nav-btn{
+        padding:7px 8px;
+        font-size:12px;
     }
 
-    .btn {
-      display: inline-block;
-      padding: 13px 28px;
-      border: 2px solid #00ffd5;
-      border-radius: 30px;
-      color: #00ffd5;
-      text-decoration: none;
-      transition: .3s;
+    .hero h1{
+        font-size:45px;
     }
-
-    .btn:hover {
-      background: #00ffd5;
-      color: #000;
-    }
-
-    h2 {
-      color: #00ffd5;
-      font-size: 32px;
-      margin-bottom: 25px;
-    }
-
-    .about-text {
-      max-width: 650px;
-      margin: auto;
-      color: #aaa;
-      line-height: 1.8;
-    }
-
-    .skills {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 15px;
-      margin-top: 30px;
-    }
-
-    .skill {
-      padding: 20px 30px;
-      background: #111;
-      border: 1px solid #00ffd5;
-      border-radius: 12px;
-      color: #00ffd5;
-      transition: .3s;
-    }
-
-    .skill:hover {
-      transform: translateY(-8px);
-      background: #00ffd5;
-      color: #000;
-    }
-
-    .project {
-      background: #111;
-      border: 1px solid #222;
-      border-radius: 15px;
-      padding: 30px;
-      margin: 20px auto;
-      max-width: 600px;
-    }
-
-    .project h3 {
-      color: #00ffd5;
-      margin-bottom: 10px;
-    }
-
-    .project p {
-      color: #aaa;
-    }
-
-    .contact {
-      color: #aaa;
-    }
-
-    .contact strong {
-      color: #00ffd5;
-    }
-
-    footer {
-      text-align: center;
-      padding: 25px;
-      border-top: 1px solid #222;
-      color: #666;
-    }
-
-    @media (max-width: 600px) {
-
-      nav {
-        padding: 15px;
-      }
-
-      nav a {
-        margin-left: 7px;
-        font-size: 11px;
-      }
-
-      .home h1 {
-        font-size: 40px;
-      }
-
-      .home p {
-        font-size: 16px;
-      }
-
-      h2 {
-        font-size: 28px;
-      }
-    }
-  </style>
+}
+</style>
 </head>
 
 <body>
 
-  <!-- NAVIGATION -->
-  <nav>
-    <div class="logo">LIJNAHI</div>
+<!-- LOADING -->
+<div id="loader">
+    <div class="spinner"></div>
+</div>
 
-    <div>
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
-    </div>
-  </nav>
+<!-- HEADER -->
+<header>
+    <div class="container nav">
 
+        <a href="#home" class="logo">LIJNAHI</a>
 
-  <!-- HOME -->
-  <section class="home" id="home">
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home" data-en="Home" data-am="መነሻ">Home</a></li>
+            <li><a href="#about" data-en="About" data-am="ስለእኔ">About</a></li>
+            <li><a href="#skills" data-en="Skills" data-am="ክህሎቶች">Skills</a></li>
+            <li><a href="#projects" data-en="Projects" data-am="ፕሮጀክቶች">Projects</a></li>
+            <li><a href="#contact" data-en="Contact" data-am="አግኙኝ">Contact</a></li>
+        </ul>
 
-    <div>
-      <h1>Hello, I'm <span>LIJNAHI</span></h1>
+        <div class="nav-buttons">
+            <button class="nav-btn" id="langBtn">AM</button>
+            <button class="nav-btn" id="themeBtn">☀️</button>
+        </div>
 
-      <p>
-        Web Developer • Software Engineering Learner
-      </p>
-
-      <a href="#projects" class="btn">
-        View My Projects
-      </a>
-    </div>
-
-  </section>
-
-
-  <!-- ABOUT -->
-  <section id="about">
-
-    <h2>About Me</h2>
-
-    <p class="about-text">
-      Hello! I'm LIJNAHI.
-      I'm learning Web Development, Programming
-      and Software Engineering.
-
-      I enjoy creating websites, learning technology
-      and building new projects.
-    </p>
-
-  </section>
-
-
-  <!-- SKILLS -->
-  <section id="skills">
-
-    <h2>My Skills</h2>
-
-    <div class="skills">
-
-      <div class="skill">HTML</div>
-      <div class="skill">CSS</div>
-      <div class="skill">JavaScript</div>
-      <div class="skill">Python</div>
-      <div class="skill">Canva</div>
-      <div class="skill">Video Editing</div>
+        <button class="menu-btn" id="menuBtn">☰</button>
 
     </div>
-
-  </section>
-
-
-  <!-- PROJECTS -->
-  <section id="projects">
-
-    <h2>My Projects</h2>
-
-    <div class="project">
-
-      <h3>LIJNAHI Website</h3>
-
-      <p>
-        My personal website created using HTML and CSS.
-      </p>
-
-    </div>
-
-    <div class="project">
-
-      <h3>Portfolio Website</h3>
-
-      <p>
-        My personal developer portfolio project.
-      </p>
-
-    </div>
-
-  </section>
+</header>
 
 
-  <!-- CONTACT -->
-  <section id="contact">
+<!-- HERO -->
+<section class="hero" id="home">
+    <div class="container hero-content reveal">
 
-    <h2>Contact Me</h2>
+        <div class="small-title"
+             data-en="WELCOME TO MY PORTFOLIO"
+             data-am="ወደ ፖርትፎሊዮዬ እንኳን በደህና መጡ">
+            WELCOME TO MY PORTFOLIO
+        </div>
 
-    <div class="contact">
+        <h1>
+            <span data-en="Hello, I'm" data-am="ሰላም፣ እኔ">Hello, I'm</span>
+            <br>
+            LIJNAHI
+        </h1>
 
-      <p>
-        Telegram:
-        <strong>@NInate21</strong>
-      </p>
+        <p
+          data-en="I'm a student learning web development, software engineering and digital skills. This is my personal portfolio."
+          data-am="እኔ ዌብ ዴቨሎፕመንት፣ ሶፍትዌር ኢንጂነሪንግ እና ዲጂታል ክህሎቶችን የምማር ተማሪ ነኝ። ይህ የግል ፖርትፎሊዮዬ ነው።">
+          I'm a student learning web development, software engineering and digital skills.
+          This is my personal portfolio.
+        </p>
+
+        <div class="hero-buttons">
+            <a href="#projects" class="btn primary"
+               data-en="View Projects"
+               data-am="ፕሮጀክቶቼን ይመልከቱ">
+               View Projects
+            </a>
+
+            <a href="#contact" class="btn"
+               data-en="Contact Me"
+               data-am="አግኙኝ">
+               Contact Me
+            </a>
+        </div>
 
     </div>
+</section>
 
-  </section>
+
+<!-- ABOUT -->
+<section id="about">
+    <div class="container">
+
+        <div class="section-title reveal">
+            <h2><span data-en="About" data-am="ስለ">About</span> Me</h2>
+            <p data-en="A little information about me"
+               data-am="ስለእኔ ትንሽ መረጃ">
+               A little information about me
+            </p>
+        </div>
+
+        <div class="about-grid">
+
+            <div class="about-card reveal">
+                <h3>👨‍💻 LIJNAHI</h3>
+
+                <p
+                data-en="I am a student interested in technology, websites, programming and digital creativity. I am learning step by step and building real projects."
+                data-am="እኔ በቴክኖሎጂ፣ ዌብሳይት፣ ፕሮግራሚንግ እና ዲጂታል ፈጠራ የምፈልግ ተማሪ ነኝ። በደረጃ በደረጃ እየተማርኩ እውነተኛ ፕሮጀክቶችን እየሰራሁ ነው።">
+                    I am a student interested in technology, websites,
+                    programming and digital creativity.
+                </p>
+            </div>
+
+            <div class="about-card reveal">
+                <h3>🚀 My Goal</h3>
+
+                <p
+                data-en="My goal is to become a skilled software engineer and web developer, create useful projects and build a successful digital career."
+                data-am="ግቤ ችሎታ ያለው ሶፍትዌር ኢንጂነር እና ዌብ ዴቨሎፐር መሆን፣ ጠቃሚ ፕሮጀክቶችን መፍጠር እና የተሳካ ዲጂታል ስራ መገንባት ነው።">
+                    My goal is to become a skilled software engineer
+                    and web developer.
+                </p>
+            </div>
+
+        </div>
+    </div>
+</section>
 
 
-  <!-- FOOTER -->
-  <footer>
+<!-- SKILLS -->
+<section id="skills">
+    <div class="container">
 
-    © 2026 LIJNAHI — All Rights Reserved.
+        <div class="section-title reveal">
+            <h2><span data-en="My" data-am="የእኔ">My</span> Skills</h2>
+            <p data-en="Technologies and digital skills I am learning"
+               data-am="እየተማርኳቸው ያሉ ቴክኖሎጂዎችና ዲጂታል ክህሎቶች">
+               Technologies and digital skills I am learning
+            </p>
+        </div>
 
-  </footer>
+        <div class="skills-grid">
+
+            <div class="skill reveal">
+                <div class="skill-icon">🌐</div>
+                <h3>HTML</h3>
+                <p>Website structure</p>
+            </div>
+
+            <div class="skill reveal">
+                <div class="skill-icon">🎨</div>
+                <h3>CSS</h3>
+                <p>Design & layout</p>
+            </div>
+
+            <div class="skill reveal">
+                <div class="skill-icon">⚡</div>
+                <h3>JavaScript</h3>
+                <p>Interactive websites</p>
+            </div>
+
+            <div class="skill reveal">
+                <div class="skill-icon">🐍</div>
+                <h3>Python</h3>
+                <p>Programming basics</p>
+            </div>
+
+            <div class="skill reveal">
+                <div class="skill-icon">🖌️</div>
+                <h3>Canva</h3>
+                <p>Graphic design</p>
+            </div>
+
+            <div class="skill reveal">
+                <div class="skill-icon">🎬</div>
+                <h3>Video Editing</h3>
+                <p>Creative video editing</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- PROJECTS -->
+<section id="projects">
+    <div class="container">
+
+        <div class="section-title reveal">
+            <h2><span data-en="My" data-am="የእኔ">My</span> Projects</h2>
+            <p data-en="Some of my projects"
+               data-am="አንዳንድ ፕሮጀክቶቼ">
+               Some of my projects
+            </p>
+        </div>
+
+        <div class="projects-grid">
+
+            <div class="project reveal">
+                <div class="project-number">01</div>
+
+                <h3>LIJNAHI Website</h3>
+
+                <p
+                data-en="My personal website built with HTML, CSS and JavaScript."
+                data-am="በ HTML፣ CSS እና JavaScript የተሰራ የግል ድህረ ገጼ።">
+                    My personal website built with HTML,
+                    CSS and JavaScript.
+                </p>
+
+                <a class="project-link"
+                   href="https://lijnahifx-creator.github.io/LIJNAHI/"
+                   target="_blank">
+                   Live Website →
+                </a>
+            </div>
+
+
+            <div class="project reveal">
+                <div class="project-number">02</div>
+
+                <h3>Portfolio Website</h3>
+
+                <p
+                data-en="A modern responsive portfolio website showing my skills and projects."
+                data-am="ክህሎቶቼንና ፕሮጀክቶቼን የሚያሳይ ዘመናዊ responsive portfolio website።">
+                    A modern responsive portfolio website
+                    showing my skills and projects.
+                </p>
+
+                <a class="project-link"
+                   href="#home">
+                   View Project →
+                </a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- CONTACT -->
+<section id="contact">
+    <div class="container">
+
+        <div class="contact-box reveal">
+
+            <h2
+            data-en="Let's Connect"
+            data-am="እንገናኝ">
+                Let's Connect
+            </h2>
+
+            <p
+            data-en="If you want to contact me, you can find me on Telegram."
+            data-am="እኔን ለማግኘት በ Telegram ላይ ማነጋገር ይችላሉ።">
+                If you want to contact me,
+                you can find me on Telegram.
+            </p>
+
+            <a class="btn primary"
+               href="https://t.me/NInate21"
+               target="_blank">
+                Telegram @NInate21
+            </a>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+    © 2026 <span>LIJNAHI</span>.
+    <span data-en="All Rights Reserved."
+          data-am="መብቱ የተጠበቀ ነው።">
+        All Rights Reserved.
+    </span>
+</footer>
+
+
+<script>
+
+/* =========================
+   LOADING
+========================= */
+window.addEventListener("load", function(){
+
+    setTimeout(function(){
+        document.getElementById("loader").classList.add("hide");
+    }, 600);
+
+});
+
+
+/* =========================
+   MOBILE MENU
+========================= */
+const menuBtn = document.getElementById("menuBtn");
+const navLinks = document.getElementById("navLinks");
+
+menuBtn.addEventListener("click", function(){
+
+    navLinks.classList.toggle("active");
+
+    if(navLinks.classList.contains("active")){
+        menuBtn.textContent = "✕";
+    }else{
+        menuBtn.textContent = "☰";
+    }
+
+});
+
+
+/* Close menu after clicking link */
+document.querySelectorAll(".nav-links a").forEach(function(link){
+
+    link.addEventListener("click", function(){
+        navLinks.classList.remove("active");
+        menuBtn.textContent = "☰";
+    });
+
+});
+
+
+/* =========================
+   DARK / LIGHT MODE
+========================= */
+const themeBtn = document.getElementById("themeBtn");
+
+let savedTheme = localStorage.getItem("theme");
+
+if(savedTheme === "light"){
+    document.body.classList.add("light");
+    themeBtn.textContent = "🌙";
+}
+
+themeBtn.addEventListener("click", function(){
+
+    document.body.classList.toggle("light");
+
+    if(document.body.classList.contains("light")){
+
+        localStorage.setItem("theme","light");
+        themeBtn.textContent = "🌙";
+
+    }else{
+
+        localStorage.setItem("theme","dark");
+        themeBtn.textContent = "☀️";
+
+    }
+
+});
+
+
+/* =========================
+   LANGUAGE
+========================= */
+const langBtn = document.getElementById("langBtn");
+
+let currentLanguage =
+    localStorage.getItem("language") || "en";
+
+
+function changeLanguage(language){
+
+    document.querySelectorAll("[data-en]").forEach(function(element){
+
+        element.textContent = element.getAttribute(
+            "data-" + language
+        );
+
+    });
+
+    document.documentElement.lang = language;
+
+    if(language === "en"){
+        langBtn.textContent = "AM";
+    }else{
+        langBtn.textContent = "EN";
+    }
+
+    localStorage.setItem("language", language);
+}
+
+
+changeLanguage(currentLanguage);
+
+
+langBtn.addEventListener("click", function(){
+
+    if(currentLanguage === "en"){
+        currentLanguage = "am";
+    }else{
+        currentLanguage = "en";
+    }
+
+    changeLanguage(currentLanguage);
+
+});
+
+
+/* =========================
+   SCROLL ANIMATION
+========================= */
+const revealElements =
+    document.querySelectorAll(".reveal");
+
+
+const observer = new IntersectionObserver(
+    function(entries){
+
+        entries.forEach(function(entry){
+
+            if(entry.isIntersecting){
+
+                entry.target.classList.add("show");
+
+            }
+
+        });
+
+    },
+    {
+        threshold:0.12
+    }
+);
+
+
+revealElements.forEach(function(element){
+    observer.observe(element);
+});
+
+</script>
 
 </body>
-</html>
+  </html>
