@@ -10,122 +10,93 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      scroll-behavior: smooth;
     }
 
     body {
-      font-family: Arial, sans-serif;
       background: #000;
-      color: white;
-      line-height: 1.6;
+      color: #fff;
+      font-family: Arial, sans-serif;
     }
 
-    header {
-      padding: 20px;
-      text-align: center;
-      border-bottom: 1px solid #222;
-      position: sticky;
+    nav {
+      position: fixed;
       top: 0;
-      background: #000;
+      width: 100%;
+      padding: 20px 8%;
+      background: rgba(0,0,0,.9);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       z-index: 100;
     }
 
-    header h2 {
-      color: #00ffcc;
-      margin-bottom: 10px;
+    .logo {
+      color: #00ffd5;
+      font-size: 25px;
+      font-weight: bold;
     }
 
     nav a {
-      color: white;
+      color: #fff;
       text-decoration: none;
-      margin: 0 8px;
-      font-size: 14px;
+      margin-left: 20px;
     }
 
     nav a:hover {
-      color: #00ffcc;
-    }
-
-    section {
-      padding: 70px 20px;
-      max-width: 900px;
-      margin: auto;
-      text-align: center;
+      color: #00ffd5;
     }
 
     .home {
-      min-height: 90vh;
+      min-height: 100vh;
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
+      text-align: center;
+      padding: 80px 20px;
     }
 
     .home h1 {
-      font-size: 50px;
-      color: #00ffcc;
+      font-size: 55px;
+      margin-bottom: 15px;
+    }
+
+    .home h1 span {
+      color: #00ffd5;
     }
 
     .home p {
-      margin: 15px 0 25px;
-      color: #bbb;
+      color: #aaa;
+      font-size: 18px;
+      margin-bottom: 30px;
     }
 
     .btn {
       display: inline-block;
-      padding: 12px 25px;
-      background: #00ffcc;
-      color: #000;
+      padding: 13px 28px;
+      border: 2px solid #00ffd5;
+      border-radius: 30px;
+      color: #00ffd5;
       text-decoration: none;
-      border-radius: 25px;
-      font-weight: bold;
+      transition: .3s;
     }
 
     .btn:hover {
-      transform: scale(1.05);
+      background: #00ffd5;
+      color: #000;
     }
 
-    h2 {
-      color: #00ffcc;
-      margin-bottom: 25px;
-    }
-
-    .card {
-      background: #111;
-      border: 1px solid #222;
-      border-radius: 15px;
-      padding: 25px;
-      margin: 15px 0;
-    }
-
-    .skills {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-      gap: 15px;
-    }
-
-    .skill {
-      background: #111;
-      padding: 20px;
-      border-radius: 12px;
-      border: 1px solid #222;
-    }
-
-    footer {
-      text-align: center;
-      padding: 25px;
-      border-top: 1px solid #222;
-      color: #777;
-    }
-
-    @media (max-width: 600px) {
-      .home h1 {
-        font-size: 38px;
+    @media(max-width:600px) {
+      nav {
+        padding: 18px;
       }
 
       nav a {
-        font-size: 12px;
-        margin: 0 4px;
+        margin-left: 8px;
+        font-size: 13px;
+      }
+
+      .home h1 {
+        font-size: 40px;
       }
     }
   </style>
@@ -133,74 +104,30 @@
 
 <body>
 
-  <header>
-    <h2>LIJNAHI</h2>
+  <nav>
+    <div class="logo">LIJNAHI</div>
 
-    <nav>
+    <div>
       <a href="#home">Home</a>
       <a href="#about">About</a>
       <a href="#skills">Skills</a>
       <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
+    </div>
+  </nav>
 
-  <section id="home" class="home">
-    <h1>LIJNAHI</h1>
-    <p>Web Developer & Creative Learner</p>
-    <a href="#projects" class="btn">View My Work</a>
-  </section>
+  <section class="home" id="home">
+    <div>
+      <h1>Hello, I'm <span>LIJNAHI</span></h1>
 
-  <section id="about">
-    <h2>About Me</h2>
-
-    <div class="card">
       <p>
-        Hello! I'm LIJNAHI.
-        I'm learning web development and software engineering.
-        This is my personal portfolio website.
+        Web Developer • Software Engineering Learner
       </p>
+
+      <a href="#projects" class="btn">
+        View My Projects
+      </a>
     </div>
   </section>
-
-  <section id="skills">
-    <h2>My Skills</h2>
-
-    <div class="skills">
-      <div class="skill">HTML</div>
-      <div class="skill">CSS</div>
-      <div class="skill">JavaScript</div>
-      <div class="skill">Python</div>
-      <div class="skill">Canva</div>
-      <div class="skill">Video Editing</div>
-    </div>
-  </section>
-
-  <section id="projects">
-    <h2>My Projects</h2>
-
-    <div class="card">
-      <h3>LIJNAHI Website</h3>
-      <p>My personal website built with HTML and CSS.</p>
-    </div>
-
-    <div class="card">
-      <h3>Portfolio</h3>
-      <p>My first developer portfolio project.</p>
-    </div>
-  </section>
-
-  <section id="contact">
-    <h2>Contact Me</h2>
-
-    <div class="card">
-      <p>Telegram: @NInate21</p>
-    </div>
-  </section>
-
-  <footer>
-    © 2026 LIJNAHI. All Rights Reserved.
-  </footer>
 
 </body>
 </html>
