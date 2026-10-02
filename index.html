@@ -10,6 +10,7 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+      scroll-behavior: smooth;
     }
 
     body {
@@ -22,28 +23,37 @@
       position: fixed;
       top: 0;
       width: 100%;
-      padding: 20px 8%;
-      background: rgba(0,0,0,.9);
+      padding: 18px 7%;
+      background: rgba(0,0,0,.95);
       display: flex;
       justify-content: space-between;
       align-items: center;
       z-index: 100;
+      border-bottom: 1px solid #222;
     }
 
     .logo {
       color: #00ffd5;
-      font-size: 25px;
+      font-size: 24px;
       font-weight: bold;
     }
 
     nav a {
-      color: #fff;
+      color: white;
       text-decoration: none;
-      margin-left: 20px;
+      margin-left: 15px;
+      font-size: 14px;
     }
 
     nav a:hover {
       color: #00ffd5;
+    }
+
+    section {
+      padding: 100px 20px;
+      text-align: center;
+      max-width: 1000px;
+      margin: auto;
     }
 
     .home {
@@ -51,8 +61,6 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      text-align: center;
-      padding: 80px 20px;
     }
 
     .home h1 {
@@ -85,18 +93,96 @@
       color: #000;
     }
 
-    @media(max-width:600px) {
+    h2 {
+      color: #00ffd5;
+      font-size: 32px;
+      margin-bottom: 25px;
+    }
+
+    .about-text {
+      max-width: 650px;
+      margin: auto;
+      color: #aaa;
+      line-height: 1.8;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 30px;
+    }
+
+    .skill {
+      padding: 20px 30px;
+      background: #111;
+      border: 1px solid #00ffd5;
+      border-radius: 12px;
+      color: #00ffd5;
+      transition: .3s;
+    }
+
+    .skill:hover {
+      transform: translateY(-8px);
+      background: #00ffd5;
+      color: #000;
+    }
+
+    .project {
+      background: #111;
+      border: 1px solid #222;
+      border-radius: 15px;
+      padding: 30px;
+      margin: 20px auto;
+      max-width: 600px;
+    }
+
+    .project h3 {
+      color: #00ffd5;
+      margin-bottom: 10px;
+    }
+
+    .project p {
+      color: #aaa;
+    }
+
+    .contact {
+      color: #aaa;
+    }
+
+    .contact strong {
+      color: #00ffd5;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      border-top: 1px solid #222;
+      color: #666;
+    }
+
+    @media (max-width: 600px) {
+
       nav {
-        padding: 18px;
+        padding: 15px;
       }
 
       nav a {
-        margin-left: 8px;
-        font-size: 13px;
+        margin-left: 7px;
+        font-size: 11px;
       }
 
       .home h1 {
         font-size: 40px;
+      }
+
+      .home p {
+        font-size: 16px;
+      }
+
+      h2 {
+        font-size: 28px;
       }
     }
   </style>
@@ -104,6 +190,7 @@
 
 <body>
 
+  <!-- NAVIGATION -->
   <nav>
     <div class="logo">LIJNAHI</div>
 
@@ -112,10 +199,14 @@
       <a href="#about">About</a>
       <a href="#skills">Skills</a>
       <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
     </div>
   </nav>
 
+
+  <!-- HOME -->
   <section class="home" id="home">
+
     <div>
       <h1>Hello, I'm <span>LIJNAHI</span></h1>
 
@@ -127,7 +218,97 @@
         View My Projects
       </a>
     </div>
+
   </section>
+
+
+  <!-- ABOUT -->
+  <section id="about">
+
+    <h2>About Me</h2>
+
+    <p class="about-text">
+      Hello! I'm LIJNAHI.
+      I'm learning Web Development, Programming
+      and Software Engineering.
+
+      I enjoy creating websites, learning technology
+      and building new projects.
+    </p>
+
+  </section>
+
+
+  <!-- SKILLS -->
+  <section id="skills">
+
+    <h2>My Skills</h2>
+
+    <div class="skills">
+
+      <div class="skill">HTML</div>
+      <div class="skill">CSS</div>
+      <div class="skill">JavaScript</div>
+      <div class="skill">Python</div>
+      <div class="skill">Canva</div>
+      <div class="skill">Video Editing</div>
+
+    </div>
+
+  </section>
+
+
+  <!-- PROJECTS -->
+  <section id="projects">
+
+    <h2>My Projects</h2>
+
+    <div class="project">
+
+      <h3>LIJNAHI Website</h3>
+
+      <p>
+        My personal website created using HTML and CSS.
+      </p>
+
+    </div>
+
+    <div class="project">
+
+      <h3>Portfolio Website</h3>
+
+      <p>
+        My personal developer portfolio project.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- CONTACT -->
+  <section id="contact">
+
+    <h2>Contact Me</h2>
+
+    <div class="contact">
+
+      <p>
+        Telegram:
+        <strong>@NInate21</strong>
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- FOOTER -->
+  <footer>
+
+    © 2026 LIJNAHI — All Rights Reserved.
+
+  </footer>
 
 </body>
 </html>
